@@ -1,0 +1,157 @@
+" main settings
+set title                      " show title in console title bar
+set nocompatible               " use vim defaults
+set modelines=0                " enable modline
+syntax on                      " enable syntax highlighting
+set autowrite                  " auto saves changes when quitting and swiching buffer
+set number                     " show line numbers
+set ignorecase                 " ignore case when searching
+set title                      " show title in console title bar
+set ttyfast                    " smoother changes
+set hlsearch                   " highlight searches
+set incsearch                  " do incremental searching
+set ruler                      " show the cursor position all the time
+set backspace=indent,eol,start " make backspace nice
+set whichwrap+=<,>,h,l         " make backspace nice
+set laststatus=2               " show statusbar always
+filetype plugin on             " load filetype plugin
+set autoread                   " read change
+set history=100                " keep in mind
+set cmdheight=1                " cmd 1 lines
+set smartcase                  " When searching try to be smart about cases
+set hlsearch                   " Highlight search results
+set incsearch                  " Makes search act like search in modern browsers
+set lazyredraw                 " Don't redraw while executing macros (good performance config)
+set magic                      " For regular expressions turn magic on
+set showmatch                  " Show matching brackets when text indicator is over them
+set mat=2                      " How many tenths of a second to blink when matching brackets
+
+" No annoying sound on errors
+set visualbell t_vb=           " turn off error beep/flash
+set noerrorbells
+set novisualbell
+set t_vb=
+set tm=500
+
+let $LANG='en'                      " english
+set langmenu=en                     " english
+map <leader>sc :setlocal spell!<cr> " spell checking
+
+" start pathogen
+execute pathogen#infect()
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => shortcuts
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let mapleader = ","                 " With a map leader it's possible to do extra key combinations
+nmap <leader>w :w!<cr>              " Fast saving
+command W w !sudo tee % > /dev/null " :W sudo saves the file
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => tab and indent related
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set noautoindent          " disable autoindent
+filetype plugin indent on " nativ indent detection
+set tabstop=2             " 2 space
+set softtabstop=2         " 2 space
+set shiftwidth=2          " 2 space
+set expandtab             " extend tabs to space
+set smarttab              " Be smart when using tabs ;)
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Colors and Fonts
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set background=dark   " background
+colorscheme molokai " colorscheme
+
+" Set extra options when running in GUI mode
+if has("gui_running")
+    set guioptions-=T
+    set guioptions+=e
+    set t_Co=256
+    set guitablabel=%M\ %t
+endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => encoding, files, and backup
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set encoding=utf-8             " use utf8
+set fileencoding=utf-8         " write utf8 files
+
+" Turn backup off, since most stuff is in SVN, git et.c anyway...
+set nobackup
+set nowb
+set noswapfile
+
+" Use Unix as the standard file type
+set ffs=unix,dos,mac
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" wildmenu
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set wildmenu                   " show menu for vim commands
+set wildignore=*.o,*~,*.pyc    " ignore stuff
+if has("win16") || has("win32")
+    set wildignore+=.git\*,.hg\*,.svn\*
+else
+    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+endif
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Turn persistent undo on 
+"   means that you can undo even when you close a buffer/VIM
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+try
+    set undodir=~/.vim_runtime/temp_dirs/undodir
+    set undofile
+catch
+endtry
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => tabs
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <leader>tn :tabnew<cr>
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove<cr>
+map <leader>t<leader> :tabNext<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => autocommands
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" remove unused space at end of line
+autocmd FileType c,cpp,java,php,pl,py,pp autocmd BufWritePre <buffer> :%s/\s\+$//e
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => UltiSip
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => syntastic
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"let g:syntastic_debug=1
+
+"perl
+let g:syntastic_enable_perl_checker = 1
+let g:syntastic_perl_checkers = ['perlcritic', 'perl']
+let g:syntastic_perl_lib_path = [ '.', '..', './lib', './lib/auto' ]
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Nerd Tree
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:NERDTreeWinPos = "right"
+let NERDTreeShowHidden=0
+let NERDTreeIgnore = ['\.pyc$', '__pycache__']
+let g:NERDTreeWinSize=35
+map <leader>nn :NERDTreeToggle<cr>
+
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif

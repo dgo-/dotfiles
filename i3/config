@@ -1,0 +1,291 @@
+#
+# dgo i3 config
+#
+
+#######################################################
+#                  appearance                         #
+#######################################################
+
+#
+# workspace
+#
+
+# default layout tabbed
+workspace_layout tabbed
+
+# default orientation
+default_orientation horizontal
+
+# setup font
+#font xft:Monospace 12px
+font pango:System San Francisco Display 12px
+
+# new window default border
+new_window 1pixel
+new_float  1pixel
+
+# thin borders
+hide_edge_borders both
+
+# colors
+set $bg-color 	         #2f343f
+set $inactive-bg-color   #2f343f
+set $text-color          #f3f4f5
+set $inactive-text-color #676E7D
+set $urgent-bg-color     #E53935
+set $bg-active           #101010
+set $bg-active-text      #DADFE9
+set $focus               #E53935
+
+# window colors
+#                       border              background         text                 indicator
+#client.focused          $bg-color           $bg-color          $text-color          #00ff00
+client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
+client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
+
+# window colors
+#                        border              background                  text                 indicator
+client.focused           $focus              $bg-active                  $text-color          #00ff00
+client.focused_inactive  $bg-active          $bg-active                  $bg-active-text      #00ff00
+client.unfocused         $bg-active          $inactive-bg-color          $inactive-text-color #00ff00
+client.urgent            $urgent-bg-color    $urgent-bg-color            $text-color          #00ff00
+
+# bar
+bar {
+	status_command 		i3blocks -c ~/.config/i3/i3blocks.conf
+	position					top
+	mode							dock
+	workspace_buttons yes
+#  tray_output       primary
+  font pango:System San Francisco Display,FontAwesome 14px
+
+	colors {
+	  background $bg-color
+	  separator  #757575
+		#                  border             background         text
+		focused_workspace  $bg-color          $bg-active         $text-color
+    active_workspace   $bg-color 		      $bg-active 	       $bg-active-text 
+		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+	}
+}
+#######################################################
+#                  workspace                          #
+#######################################################
+set $ws1 "1  "
+set $ws2 "2  "
+set $ws3 "3  "
+set $ws4 "4  "
+set $ws5 "5  "
+set $ws6 "6  "
+set $ws7 "7  "
+set $ws8 "8  "
+set $ws9 "9  "
+set $ws0 "0  "
+#######################################################
+#                    hotkeys                          #
+#######################################################
+
+# use ALT
+set $mod  Mod1
+# and meta
+set $mod2 Mod4
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws0
+
+# move container
+bindsym $mod2+1 move container to workspace $ws1
+bindsym $mod2+2 move container to workspace $ws2
+bindsym $mod2+3 move container to workspace $ws3
+bindsym $mod2+4 move container to workspace $ws4
+bindsym $mod2+5 move container to workspace $ws5
+bindsym $mod2+6 move container to workspace $ws6
+bindsym $mod2+7 move container to workspace $ws7
+bindsym $mod2+8 move container to workspace $ws8
+bindsym $mod2+9 move container to workspace $ws9
+bindsym $mod2+0 move container to workspace $ws0
+
+bindsym $mod2+Left  move container to output left
+bindsym $mod2+Right move container to output right
+bindsym $mod2+Up    move container to output up
+bindsym $mod2+Down  move container to output down
+
+bindsym $mod+Tab    	focus right
+bindsym $mod+Shift+Tab  focus left
+
+#move workspace
+bindsym $mod2+Shift+Left  move workspace to output left
+bindsym $mod2+Shift+Right move workspace to output right
+bindsym $mod2+Shift+Up    move workspace to output up
+bindsym $mod2+Shift+Down  move workspace to output down
+
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# toggle tiling / floating
+bindsym $mod+Return floating toggle
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+#
+# resize
+#
+
+bindsym $mod+r mode "resize"
+
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym odiaeresis resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+#######################################################
+#                  apps                               #
+#######################################################
+
+# assign apps to workspaces
+assign [class="Pidgin"] $ws1
+assign [class="Mail"]   $ws2
+assign [class="Chromium-browser"] $ws3
+assign [class="chromium-browser"] $ws3
+assign [title="(?i)Spotify Web Player.*"] $ws3
+assign [class="Keepassx"] $ws4
+assign [class="keepassx"] $ws4
+
+# make some apps floating
+for_window [class="rdesktop"] floating disable
+for_window [class="Sxiv"] floating enable
+for_window [class="sxiv"] floating enable 
+for_window [class="Thunar"] floating enable 
+for_window [class="thunar"] floating enable 
+
+#######################################################
+#                  shortcuts                          #
+#######################################################
+
+#
+# application
+#
+
+# start term
+bindsym $mod+F1 exec konsole
+
+# start firefox
+bindsym $mod+F2 exec google-chrome 
+
+# start calculator
+bindsym $mod+F3 exec gnome-calculator
+
+# start thunar
+bindsym $mod+F4 exec thunar
+
+# scrot screenshot
+bindsym --release Print exec --no-startup-id scrot -s -e 'mv $f ~/pictures/shots'
+bindsym $mod+Print exec scrot -e 'mv $f /tmp/ && gimp /tmp/$f'
+
+# lock screen
+bindsym F12 	exec ~/.config/i3/lock.sh
+
+# start dmenu
+#bindsym $mod+space exec dmenu_run -nb \#002b36 -nf \#839496 -sb \#073642 -sf \#cb4b16
+# start rofi
+bindsym $mod+space exec rofi -font "System San Francisco Display 14" -lines 10 -eh 1 -width 50 -padding 5 -hide-scrollbar  -show run
+
+
+
+#
+# control
+#
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym F9 restart
+# exit i3 (logs you out of your X session)
+bindsym Control+Mod1+BackSpace exit
+# kill focused window
+bindsym $mod+q kill
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+u layout stacking
+bindsym $mod+t layout tabbed
+bindsym $mod+s layout toggle split
+
+#
+# multimedia keys
+#
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
+bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
+#bindsym XF86AudioMute exec amixer -q set Master toggle
+bindsym XF86AudioMute exec amixer -q -D pulse set Master Playback Switch toggle || amixer -q set Front toggle
+
+#######################################################
+#                  autostart                          #
+#######################################################
+
+exec --no-startup-id ~/.config/i3/autostart.sh
+# wallaper
+#exec_always --no-startup-id feh --bg-fill --no-xinerama --randomize  -r ~/pictures/wallpaper
+
+# settings
+#exec --no-startup-id xset b off                                 # no noise (disable beep)
+#exec --no-startup-id numlockx on                                # enable numlock
+#exec --no-startup-id setxkbmap -option terminate:ctrl_alt_bksp  # enable zap
+exec --no-startup-id xset +fp ~/.fonts                          # setup fonts dir
+exec --no-startup-id xset fp rehash                             # setup fonts
+#exec --no-startup-id xmodmap ~/.Xmodmap                         # load my keymap
+#exec --no-startup-id ~/.xrandrc                                 # run xrandr
+
+# launch apllications
+#exec --no-startup-id clipit                                                  # clipboard manager
+#exec --no-startup-id autokey                                                 # autokey
+#exec --no-startup-id dropbox start                                           # Dropbox
+#exec --no-startup-id gnome-keyring-daemon --components=secrets,ssh -r -d     # Keyring
+#exec --no-startup-id nm-applet                                               # Network Manager
+#exec --no-startup-id pidgin                                                  # pidgin
+#exec --no-startup-id nagstamon                                               # nagios client
+
+# launch compton
+#exec --no-startup-id compton -f

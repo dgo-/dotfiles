@@ -1,0 +1,1 @@
+/opt/bin/btsync --config ${HOME}/.btsync &

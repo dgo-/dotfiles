@@ -1,0 +1,7 @@
+#!/bin/sh
+#
+# activate with the following command
+# fbsetbg -u ~/.fluxbox/bgset -r ~/pictures/wallpaper
+#
+#### This feh2 script calls feh on the entire display
+exec feh --bg-fill --no-xinerama "$@"

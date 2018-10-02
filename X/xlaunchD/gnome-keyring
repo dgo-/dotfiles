@@ -1,0 +1,4 @@
+#/usr/bin/gnome-keyring-daemon --components=secrets,ssh -r -d
+
+eval $(gnome-keyring-daemon --start --components=ssh)
+export $(gnome-keyring-daemon -s)

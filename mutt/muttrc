@@ -1,0 +1,131 @@
+# save sent emails
+set copy=yes
+
+set folder="${HOME}/.mail/"
+source "${HOME}/.mutt/accounts/default"
+
+# Paths ----------------------------------------------
+set alias_file       = ~/.mutt/alias         # where to store aliases
+#set header_cache     = ~/.mutt/cache/headers # where to store headers
+#set message_cachedir = ~/.mutt/cache/bodies  # where to store bodies
+set certificate_file = ~/.mutt/certificates  # where to store certs
+set mailcap_path     = ~/.mutt/mailcap       # entries for filetypes
+set tmpdir           = ~/.mutt/tmp           # where to keep temp files
+set signature        = ~/.mutt/sig           # my signature file
+
+# Basic Options --------------------------------------
+set wait_key = no        # shut up, mutt
+set mbox_type = Maildir  # mailbox type
+set timeout = 3          # idle time before scanning
+set mail_check = 0       # minimum time between scans
+unset move               # gmail does that
+set delete               # don't ask, just do
+unset confirmappend      # don't ask, just do!
+set quit                 # don't ask, just do!!
+unset mark_old           # read/new is good enough for me
+set beep_new             # bell on new mails
+set pipe_decode          # strip headers and eval mimes when piping
+set thorough_search      # strip headers and eval mimes before searching
+set reverse_alias				 # show name in mutt not address
+
+# sort --------------------------------------
+set sort=threads                        # use threads
+set sort_browser=date                   # new on top
+set sort_aux=reverse-last-date-received # last recived
+
+# date --------------------------------------
+                                                        # set date_format="%a, %b %d %H:%M" # date format
+set date_format="%a; %d-%m-%Y %H:%M"                    # date format
+set index_format="%4C %Z %D %-22.22F (%?l?%4l&%4c?) %s" # date for index
+set folder_format="%2C %8s %D %t %N %f"                 # date for folder
+
+# look and feel --------------------------------------
+unset allow_8bit         # better umlaut
+set send_charset="utf-8" # setting encoding
+set delete=yes           # delte whitout asking
+set quit                 # quit whtout asking
+unset confirmappend      # don't ask, just do!
+unset mark_old           # read/new is good enough for me
+set beep_new             # bell on new mails
+set wait_key = no        # shut up, mutt
+
+# header --------------------------------------
+set pipe_decode                       # strip headers and eval mimes when piping
+set thorough_search                   # strip headers and eval mimes before searching
+set edit_headers=yes                  # now i can edit my headers
+unset user_agent                      # unset user-agent header
+ignore *                              # ignore all headers
+unignore from: to: cc: date: subject: # show only these
+
+# writeing --------------------------------------
+set recall=no          							 # no recall message
+set sig_dashes                       # dashes before sig
+set fast_reply                       # skip to compose when replying
+set attribution = "On %d, %n wrote:" # format of quoting header
+set forward_format = "Fwd: %s"       # format of subject when forwarding
+set forward_decode                   # decode when forwarding
+set reply_to                         # reply to Reply to: field
+set reverse_name                     # reply as whomever it was to
+set include                          # include message in replies
+set forward_quote                    # include message in forwards
+
+# sidebar ---------------------------------
+set sidebar_width=30
+set sidebar_visible=yes
+#set sidebar_sort=no
+
+# statusbar ---------------------------------
+set status_chars  = " *%A"
+set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
+
+# Pager View Options ---------------------------------
+set pager_index_lines = 0 # number of index lines to show
+set pager_context = 3      # number of context lines to show
+set pager_stop             # don't go to next message automatically
+set menu_scroll            # scroll in menus
+set tilde                  # show tildes like in vim
+unset markers              # no ugly plus signs
+set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
+
+# view ---------------------------------
+auto_view text/html
+alternative_order text/plain text/enriched text/html
+
+# editor ---------------------------------
+set editor="vim +8 +':set textwidth=77' +':set wrap'"
+
+# abook
+set query_command = "addressbook '%s'"
+#set query_command = "contacts -Sf '%eTOKEN%n' '%s' | sed -e 's/TOKEN/\t/g'"
+bind editor <Tab> complete-query
+bind editor ^T    complete
+
+# hotkeys ---------------------------------
+bind index,pager y      sidebar-next
+bind index,pager a      sidebar-prev
+bind index,pager .      sidebar-open
+# urlview
+macro index \cb "|urlview\n"    # open url CTRL+B
+macro pager \cb "|urlview\n"    # open url CTRL+B
+macro pager u "|urlview\n"
+# vim like
+bind pager j next-line      # vim like
+bind pager k previous-line    # vim like
+bind index gg       first-entry
+bind index G        last-entry
+bind pager gg top
+bind pager G  bottom
+# relay
+bind index R        group-reply
+bind pager R        group-reply
+# search
+bind index N search-opposite
+bind pager N search-opposite
+macro index L "<limit>all\n" "show all messages (undo limit)"
+# index
+bind index <tab>    sync-mailbox
+bind index <space>  collapse-thread
+# all as read
+macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
+# mbsync && notmuch
+macro index o "<shell-escape>mbsync -aq && notmuch new &> /dev/null<enter>" "update mails"

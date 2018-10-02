@@ -1,0 +1,56 @@
+#! /bin/sh
+set -x
+# variables
+Xoverwrite="${HOME}/.xoverwrite"
+Xcustom="${HOME}/.xcustom"
+Xrandrc="${HOME}/.xrandrc"
+XlaunchD="${HOME}/.xlaunchD"
+Xmodmap="${HOME}/.Xmodmap"
+Xdefaults="${HOME}/.Xdefaults"
+Xuserfont="${HOME}/.fonts"
+Xwm="${HOME}/.xwm"
+
+# override default variables here
+if [ -f ${Xoverwrite} ]; then
+	. ${Xoverwrite}
+fi
+
+. "${HOME}/.profile"
+
+# X settings
+xset b off &							  # disable beep
+setxkbmap -option terminate:ctrl_alt_bksp # enable oldschool zap
+if [ -d ${Xuserfont} ]; then	          #
+	xset +fp ${Xuserfont}                 # setup user font dir
+  xset fp rehash                        # rehash fonts
+fi                                        #
+
+# enable numlock
+numlockx on &
+
+# load X aplicantion settings
+if [ -f ${Xdefaults} ]; then
+	xrdb -merge ${Xdefaults} &
+fi
+
+# load X keyboard settings
+if [ -f ${Xmodmap} ]; then
+	xmodmap ${Xmodmap} &
+fi
+
+# include xrandr
+if [ -f ${Xrandrc} ]; then
+	. ${Xrandrc}
+fi
+
+# override settings here
+if [ -f ${Xcustom} ]; then
+	. ${Xcustom}
+fi
+
+# launch applications
+for i in `ls ${XlaunchD}/*.start 2> /dev/null`; do
+	. ${i}
+done
+
+. ${Xwm}

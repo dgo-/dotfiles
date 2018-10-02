@@ -1,0 +1,33 @@
+############
+# settings #
+############
+
+# Look in ~/.zsh/themes/
+export ZSH_THEME="stderror"
+
+# Set to this to use case-sensitive completion
+CASE_SENSITIVE="true"
+
+# set zsh line editor mode  vi | emacs
+ZLE_MODE="vi"
+
+# select your umask
+export UMASK="0077"
+
+# set your main editor
+export EDITOR="vim"
+
+# load selected plugins
+plugins=(extract osx brew perl debian tumult)
+
+# PATH
+PATH="/usr/local/sbin:$PATH"
+export PATH
+
+#################
+# set variables #
+#################
+ZSH="${HOME}/.config/zsh"
+ZSHLIB="${ZSH}/lib"
+ZSHPLUG="${ZSH}/plugins"
+ZSHTHEME="${ZSH}/themes"

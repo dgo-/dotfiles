@@ -1,0 +1,10 @@
+[Unit]
+Description=libinput-gestures
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/libinput-gestures-setup start
+ExecStopp=/usr/bin/libinput-gestures-setup stop
+
+[Install]
+WantedBy=x.target

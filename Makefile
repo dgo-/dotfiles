@@ -12,7 +12,7 @@ all: $(TARGET)
 # diffrent operation systems
 darwin: base tmux vim zsh mutt puppet-lint perlcriticrc 
 
-linux: _base _vim _zsh _i3 _X _fonts 
+linux: _base _vim _zsh _i3 _X _fonts _systemd
 
 # configurations
 _base:
@@ -53,3 +53,6 @@ perlcriticrc:
 
 _fonts:
 	ln -fsn $(SRC_ROOT)/fonts $(DST_ROOT)/.fonts
+
+_systemd:
+	ln -fsn $(SRC_ROOT)/systemd $(DST_ROOT)/.config/systemd

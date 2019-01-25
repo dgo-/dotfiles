@@ -1,0 +1,8 @@
+[Unit]
+Description=Dropbox Network Storage Daemon
+
+[Service]
+ExecStart=/usr/bin/dropbox
+
+[Install]
+WantedBy=x.target

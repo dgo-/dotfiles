@@ -57,7 +57,7 @@ bar {
 	position					top
 	mode							dock
 	workspace_buttons yes
-#  tray_output       primary
+  tray_output       none
   font pango:System San Francisco Display,FontAwesome 14px
 
 	colors {
@@ -74,7 +74,7 @@ bar {
 #                  workspace                          #
 #######################################################
 set $ws1 "1  "
-set $ws2 "2  "
+set $ws2 "2 "
 set $ws3 "3  "
 set $ws4 "4  "
 set $ws5 "5  "
@@ -82,7 +82,7 @@ set $ws6 "6  "
 set $ws7 "7  "
 set $ws8 "8  "
 set $ws9 "9  "
-set $ws0 "0  "
+set $ws0 "0 "
 #######################################################
 #                    hotkeys                          #
 #######################################################
@@ -210,13 +210,10 @@ for_window [class="thunar"] floating enable
 #
 
 # start term
-bindsym $mod+F1 exec konsole
+bindsym $mod+F1 exec kitty
 
 # start firefox
-bindsym $mod+F2 exec google-chrome 
-
-# start calculator
-bindsym $mod+F3 exec gnome-calculator
+bindsym $mod+F2 exec google-chrome-stable
 
 # start thunar
 bindsym $mod+F4 exec thunar
@@ -226,12 +223,12 @@ bindsym --release Print exec --no-startup-id scrot -s -e 'mv $f ~/pictures/shots
 bindsym $mod+Print exec scrot -e 'mv $f /tmp/ && gimp /tmp/$f'
 
 # lock screen
-bindsym F12 	exec ~/.config/i3/lock.sh
+bindsym F12 	exec i3lock -i ~/.config/i3/lock.png -f
 
 # start dmenu
 #bindsym $mod+space exec dmenu_run -nb \#002b36 -nf \#839496 -sb \#073642 -sf \#cb4b16
 # start rofi
-bindsym $mod+space exec rofi -font "System San Francisco Display 14" -lines 10 -eh 1 -width 50 -padding 5 -hide-scrollbar  -show run
+#bindsym $mod+space exec rofi -font "System San Francisco Display 14" -lines 10 -eh 1 -width 50 -padding 5 -hide-scrollbar  -show run
 
 
 
@@ -258,34 +255,9 @@ bindsym $mod+s layout toggle split
 #
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
 bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
-#bindsym XF86AudioMute exec amixer -q set Master toggle
-bindsym XF86AudioMute exec amixer -q -D pulse set Master Playback Switch toggle || amixer -q set Front toggle
+bindsym XF86AudioMute exec amixer -q set Master toggle
+#bindsym XF86AudioMute exec amixer -q -D pulse set Master Playback Switch toggle || amixer -q set Front toggle
 
-#######################################################
-#                  autostart                          #
-#######################################################
+bindsym XF86MonBrightnessUp   exec light -A 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec light -U 10 # decrease screen brightness
 
-exec --no-startup-id ~/.config/i3/autostart.sh
-# wallaper
-#exec_always --no-startup-id feh --bg-fill --no-xinerama --randomize  -r ~/pictures/wallpaper
-
-# settings
-#exec --no-startup-id xset b off                                 # no noise (disable beep)
-#exec --no-startup-id numlockx on                                # enable numlock
-#exec --no-startup-id setxkbmap -option terminate:ctrl_alt_bksp  # enable zap
-exec --no-startup-id xset +fp ~/.fonts                          # setup fonts dir
-exec --no-startup-id xset fp rehash                             # setup fonts
-#exec --no-startup-id xmodmap ~/.Xmodmap                         # load my keymap
-#exec --no-startup-id ~/.xrandrc                                 # run xrandr
-
-# launch apllications
-#exec --no-startup-id clipit                                                  # clipboard manager
-#exec --no-startup-id autokey                                                 # autokey
-#exec --no-startup-id dropbox start                                           # Dropbox
-#exec --no-startup-id gnome-keyring-daemon --components=secrets,ssh -r -d     # Keyring
-#exec --no-startup-id nm-applet                                               # Network Manager
-#exec --no-startup-id pidgin                                                  # pidgin
-#exec --no-startup-id nagstamon                                               # nagios client
-
-# launch compton
-#exec --no-startup-id compton -f

@@ -11,33 +11,32 @@ all: $(TARGET)
 
 # diffrent operation systems
 darwin: base tmux vim zsh mutt puppet-lint perlcriticrc 
-linux: base tmux vim zsh i3 X fluxbox mutt puppet-lint perlcriticrc fonts 
+
+linux: _base _vim _zsh _i3 _X _fonts 
 
 # configurations
-base:
+_base:
 	mkdir -p $(DST_ROOT)/.config
 	git submodule init && git submodule update
 
-tmux:
+_tmux:
 	ln -fsn $(SRC_ROOT)/tmux/tmux.conf  $(DST_ROOT)/.tmux.conf
 
-vim:
+_vim:
 	ln -fsn $(SRC_ROOT)/vim/   $(DST_ROOT)/.vim
 	ln -fsn $(SRC_ROOT)/vim/vimrc $(DST_ROOT)/.vimrc
 
-zsh:
+_zsh:
 	ln -fsn $(SRC_ROOT)/zsh/zshrc      $(DST_ROOT)/.zshrc
 	ln -fsn $(SRC_ROOT)/zsh/zshenv     $(DST_ROOT)/.zshenv
+	ln -fsn $(SRC_ROOT)/zsh/zprofile   $(DST_ROOT)/.zprofile
 	ln -fsn $(SRC_ROOT)/zsh/zsh $(DST_ROOT)/.config/zsh
 
-i3:
+_i3:
 	ln    -fsn $(SRC_ROOT)/i3  $(DST_ROOT)/.config/i3
 
-X:
-	ln -fsn $(SRC_ROOT)/X/Xdefaults $(DST_ROOT)/.Xdefaults
-	ln -fsn $(SRC_ROOT)/X/xinitrc   $(DST_ROOT)/.xinitrc
-	ln -fsn $(SRC_ROOT)/X/xlaunchD   $(DST_ROOT)/.config/xlaunchD
-	ln -fsn $(SRC_ROOT)/X/Xmodmap   $(DST_ROOT)/.Xmodmap
+_X:
+	ln -fsn $(SRC_ROOT)/X $(DST_ROOT)/.config/X
 	ln -fsn $(SRC_ROOT)/X/mimeapps.list   $(DST_ROOT)/.config/mimeapps.list
 
 fluxbox:
@@ -52,5 +51,5 @@ puppet-lint:
 perlcriticrc:
 	ln -fsn $(SRC_ROOT)/perlcriticrc/perlcriticrc $(DST_ROOT)/.perlcriticrc
 
-fonts:
+_fonts:
 	ln -fsn $(SRC_ROOT)/fonts $(DST_ROOT)/.fonts

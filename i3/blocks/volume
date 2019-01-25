@@ -9,7 +9,7 @@ volume() {
 #------------------------------------------------------------------------
 
 case $BLOCK_BUTTON in
-  1) amixer -q -D pulse set Master Playback Switch toggle || amixer -q set Front toggle ;;  # left click, mute/unmute
+  1) amixer -q set Master Playback Switch toggle     || amixer -q set Front toggle ;;  # left click, mute/unmute
   4) amixer -q set Master 2dB+ unmute                 ;; # scroll up, increase
   5) amixer -q set Master 2dB- unmute                 ;; # scroll down, decrease
 esac

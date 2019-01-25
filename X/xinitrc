@@ -1,32 +1,34 @@
 #! /bin/sh
-set -x
+#set -x
+
 # variables
-Xoverwrite="${HOME}/.xoverwrite"
+CONF="${HOME}/.config/X"
+Xoverwrite="${CONF}/.xoverwrite"
 Xcustom="${HOME}/.xcustom"
 Xrandrc="${HOME}/.xrandrc"
-XlaunchD="${HOME}/.xlaunchD"
-Xmodmap="${HOME}/.Xmodmap"
-Xdefaults="${HOME}/.Xdefaults"
+XlaunchD="${CONF}/xlaunchD"
+Xmodmap="${CONF}/Xmodmap"
+Xdefaults="${CONF}/Xdefaults"
 Xuserfont="${HOME}/.fonts"
-Xwm="${HOME}/.xwm"
+WM="/usr/bin/i3"
+
+
+# import X variables
+systemctl --user import-environment DISPLAY XAUTHORITY &
+if command -v dbus-update-activation-environment >/dev/null 2>&1; then
+        dbus-update-activation-environment DISPLAY XAUTHORITY &
+fi
 
 # override default variables here
 if [ -f ${Xoverwrite} ]; then
 	. ${Xoverwrite}
 fi
 
-. "${HOME}/.profile"
-
 # X settings
-xset b off &							  # disable beep
-setxkbmap -option terminate:ctrl_alt_bksp # enable oldschool zap
 if [ -d ${Xuserfont} ]; then	          #
 	xset +fp ${Xuserfont}                 # setup user font dir
   xset fp rehash                        # rehash fonts
 fi                                        #
-
-# enable numlock
-numlockx on &
 
 # load X aplicantion settings
 if [ -f ${Xdefaults} ]; then
@@ -48,9 +50,14 @@ if [ -f ${Xcustom} ]; then
 	. ${Xcustom}
 fi
 
-# launch applications
-for i in `ls ${XlaunchD}/*.start 2> /dev/null`; do
-	. ${i}
-done
+# setup touchpad
+touchpad_id=$(xinput list --short | grep -i touchpad | cut -f 2 | cut -d = -f 2)
+xinput set-prop $touchpad_id "libinput Tapping Enabled" 1 &
 
-. ${Xwm}
+# start user services
+systemctl --user start x.target &
+
+# 
+xset b off
+
+exec ${WM}

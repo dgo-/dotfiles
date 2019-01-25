@@ -1,6 +1,2 @@
 xset b off &                                # no noise (disable beep)
 numlockx on &                               # enable numlock
-setxkbmap -option terminate:ctrl_alt_bksp & # enable zap
-xset +fp ~/.fonts &                         # setup fonts dir
-xset fp rehash &                            # setup fonts
-xmodmap ~/.Xmodmap &                        # load my keymap

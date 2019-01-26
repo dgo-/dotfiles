@@ -2,7 +2,7 @@
 Description=gnome-keyring
 
 [Service]
-ExecStart=/usr/bin/gnome-keyring-daemon --start --components=secrets
+ExecStart=/usr/bin/gnome-keyring-daemon -f -s -c secrets
 Restart=on-abort
 
 [Install]

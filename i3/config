@@ -57,7 +57,7 @@ bar {
 	position					top
 	mode							dock
 	workspace_buttons yes
-  tray_output       none
+  tray_output       primary
   font pango:System San Francisco Display,FontAwesome 14px
 
 	colors {
@@ -258,6 +258,6 @@ bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
 bindsym XF86AudioMute exec amixer -q set Master toggle
 #bindsym XF86AudioMute exec amixer -q -D pulse set Master Playback Switch toggle || amixer -q set Front toggle
 
-bindsym XF86MonBrightnessUp   exec light -A 10 # increase screen brightness
-bindsym XF86MonBrightnessDown exec light -U 10 # decrease screen brightness
+bindsym XF86MonBrightnessUp   exec sudo light -A 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec sudo light -U 10 # decrease screen brightness
 

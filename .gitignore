@@ -5,3 +5,6 @@
 
 # vim
 .vim/.netrwhist
+
+# enabled services
+systemd/user/x.target.wants/*

@@ -1,14 +1,8 @@
-# set -x
+#set -x
 
 # load libaries
-for config_file (${ZSHLIB}/*.zsh); do
+for config_file (${HOME}/.config/zsh/lib/*.zsh); do
     source "${config_file}"
-done
-
-# load plugins
-for plugin (${plugins}); do
-	fpath=(${ZSHPLUG}/${plugin}/ ${fpath})
-	source "${ZSHPLUG}/${plugin}/${plugin}.plugin.zsh"
 done
 
 autoload -U compinit
@@ -16,12 +10,3 @@ compinit -i
 
 # PATH
 PATH="${HOME}/bin:${PATH}"
-
-# load theme
-source "${ZSHTHEME}/${ZSH_THEME}.zsh-theme"
-
-#export GOPATH=$HOME/project/go-workspace # don't forget to change your path correctly!
-#export GOROOT=/usr/local/opt/go/libexec
-#export PATH=$PATH:$GOPATH/bin
-#export PATH=$PATH:$GOROOT/bin
-#export GOBIN=${GOPATH}/bin

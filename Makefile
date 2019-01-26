@@ -27,10 +27,10 @@ _vim:
 	ln -fsn $(SRC_ROOT)/vim/vimrc $(DST_ROOT)/.vimrc
 
 _zsh:
-	ln -fsn $(SRC_ROOT)/zsh/zshrc      $(DST_ROOT)/.zshrc
+	ln -fsn $(SRC_ROOT)/zsh/           $(DST_ROOT)/.config/zsh
 	ln -fsn $(SRC_ROOT)/zsh/zshenv     $(DST_ROOT)/.zshenv
 	ln -fsn $(SRC_ROOT)/zsh/zprofile   $(DST_ROOT)/.zprofile
-	ln -fsn $(SRC_ROOT)/zsh/zsh $(DST_ROOT)/.config/zsh
+	ln -fsn $(SRC_ROOT)/zsh/zshrc      $(DST_ROOT)/.zshrc
 
 _i3:
 	ln    -fsn $(SRC_ROOT)/i3  $(DST_ROOT)/.config/i3

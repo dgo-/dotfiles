@@ -56,3 +56,6 @@ _fonts:
 
 _systemd:
 	ln -fsn $(SRC_ROOT)/systemd $(DST_ROOT)/.config/systemd
+
+_kitty:
+	ln -fsn $(SRC_ROOT)/kitty $(DST_ROOT)/.config/kitty

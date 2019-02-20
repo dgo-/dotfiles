@@ -1,0 +1,9 @@
+[Unit]
+Description=Start Redshift Applet
+
+[Service]
+ExecStart=/usr/bin/redshift-gtk
+Restart=on-abort
+
+[Install]
+WantedBy=x.target

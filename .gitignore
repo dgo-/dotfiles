@@ -4,7 +4,8 @@
 
 
 # vim
-.vim/.netrwhist
+vim/.netrwhist
+vim/plugged/**
 
 # enabled services
 systemd/user/x.target.wants/*

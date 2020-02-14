@@ -63,9 +63,29 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-fugitive'
 
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+
 " Initialize plugin system
 call plug#end()
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-go
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:go_fmt_command = "goimports"
+
+" no quick fix list
+let g:go_fmt_fail_silently = 1
+
+" make types and structs nicer
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+
+" highline functions
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+
+"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => shortcuts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

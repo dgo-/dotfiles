@@ -71,7 +71,7 @@ sudo-command-line() {
         LBUFFER="${LBUFFER#sudo }"
     elif [[ $BUFFER == $EDITOR\ * ]]; then
         LBUFFER="${LBUFFER#$EDITOR }"
-        LBUFFER="sudoedit $LBUFFER"
+        LBUFFER="sudo $EDITOR $LBUFFER"
     elif [[ $BUFFER == sudoedit\ * ]]; then
         LBUFFER="${LBUFFER#sudoedit }"
         LBUFFER="$EDITOR $LBUFFER"

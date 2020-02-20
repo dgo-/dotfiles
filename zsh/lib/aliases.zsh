@@ -24,3 +24,5 @@ alias ..='cd ..'
 # cd
 alias cd..='cd ..'
 
+
+alias ssh='TERM=xterm ssh'

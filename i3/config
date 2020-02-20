@@ -53,11 +53,13 @@ client.urgent            $urgent-bg-color    $urgent-bg-color            $text-c
 
 # bar
 bar {
-	status_command 		i3blocks -c ~/.config/i3/i3blocks.conf
+  #status_command 		i3blocks -c ~/.config/i3/i3blocks.conf
+  status_command 		/home/dgo/projects/myBar/cmd/myBar/myBar
 	position					top
 	mode							dock
 	workspace_buttons yes
   tray_output       primary
+  #font pango:DejaVu Sans Mono 10
   font pango:System San Francisco Display,FontAwesome 14px
 
 	colors {
@@ -131,6 +133,12 @@ bindsym $mod2+Shift+Up    move workspace to output up
 bindsym $mod2+Shift+Down  move workspace to output down
 
 
+# move windows
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -200,6 +208,8 @@ for_window [class="Sxiv"] floating enable
 for_window [class="sxiv"] floating enable 
 for_window [class="Thunar"] floating enable 
 for_window [class="thunar"] floating enable 
+for_window [class="(?i)albert"] floating enable
+
 
 #######################################################
 #                  shortcuts                          #
@@ -228,7 +238,8 @@ bindsym F12 	exec i3lock -i ~/.config/i3/lock.png -f
 # start dmenu
 #bindsym $mod+space exec dmenu_run -nb \#002b36 -nf \#839496 -sb \#073642 -sf \#cb4b16
 # start rofi
-#bindsym $mod+space exec rofi -font "System San Francisco Display 14" -lines 10 -eh 1 -width 50 -padding 5 -hide-scrollbar  -show run
+bindsym $mod+space exec rofi -font "System San Francisco Display 14" -lines 10 -eh 1 -width 50 -padding 5 -hide-scrollbar  -show run
+bindsym $mod+w exec rofi -font "System San Francisco Display 14" -lines 10 -eh 1 -width 50 -padding 5 -hide-scrollbar  -show window
 
 
 
@@ -253,64 +264,10 @@ bindsym $mod+s layout toggle split
 #
 # multimedia keys
 #
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
-bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 10%+ unmute
+bindsym XF86AudioLowerVolume exec amixer -q set Master 10%- unmute
 bindsym XF86AudioMute exec amixer -q set Master toggle
 #bindsym XF86AudioMute exec amixer -q -D pulse set Master Playback Switch toggle || amixer -q set Front toggle
 
 bindsym XF86MonBrightnessUp   exec sudo light -A 10 # increase screen brightness
 bindsym XF86MonBrightnessDown exec sudo light -U 10 # decrease screen brightness
-
-### i3-gaps stuff ###
-
-# Necessary for i3-gaps to work properly (pixel can be any value)
-for_window [class="^.*"] border pixel 3
-
-# Smart Gaps
-smart_gaps on
-
-# Smart Borders
-smart_borders on
-
-# Set inner/outer gaps
-gaps inner 14
-gaps outer 0
-
-# Gaps mode
-set $mode_gaps Gaps: (o) outer, (i) inner
-set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
-bindsym $mod+Shift+g mode "$mode_gaps"
-
-mode "$mode_gaps" {
-        bindsym o      mode "$mode_gaps_outer"
-        bindsym i      mode "$mode_gaps_inner"
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-mode "$mode_gaps_inner" {
-        bindsym plus  gaps inner current plus 5
-        bindsym minus gaps inner current minus 5
-        bindsym 0     gaps inner current set 0
-
-        bindsym Shift+plus  gaps inner all plus 5
-        bindsym Shift+minus gaps inner all minus 5
-        bindsym Shift+0     gaps inner all set 0
-
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-mode "$mode_gaps_outer" {
-        bindsym plus  gaps outer current plus 5
-        bindsym minus gaps outer current minus 5
-        bindsym 0     gaps outer current set 0
-
-        bindsym Shift+plus  gaps outer all plus 5
-        bindsym Shift+minus gaps outer all minus 5
-        bindsym Shift+0     gaps outer all set 0
-
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}

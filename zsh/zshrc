@@ -10,3 +10,13 @@ compinit -i
 
 # PATH
 PATH="${HOME}/bin:${PATH}"
+
+# prompt
+#export VIRTUAL_ENV_DISABLE_PROMPT=1
+#autoload -Uz add-zsh-hook
+## prompt_mimir_cmd() { mimir }
+#prompt_mimir_cmd() { /home/dgo/projects/mimir/build/mimir }
+#add-zsh-hook precmd prompt_mimir_cmd
+
+#prompt_symbol='❯'
+#PROMPT='%(?.%F{magenta}.%F{red})${prompt_symbol}%f '

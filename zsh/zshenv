@@ -7,3 +7,5 @@ export UMASK="0077"
 
 # set your main editor
 export EDITOR="vim"
+
+export PATH="${HOME}/go/bin:${PATH}"

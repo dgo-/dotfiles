@@ -51,7 +51,7 @@ if [ -f ${Xcustom} ]; then
 fi
 
 # setup touchpad
-touchpad_id=$(xinput list --short | grep -i touchpad | cut -f 2 | cut -d = -f 2)
+touchpad_id=$(xinput list --short | grep -Ei 'touchpad|Synaptics' | cut -f 2 | cut -d = -f 2)
 xinput set-prop $touchpad_id "libinput Tapping Enabled" 1 &
 
 # start user services

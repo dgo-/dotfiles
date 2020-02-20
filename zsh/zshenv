@@ -1,11 +1,22 @@
-############
-# settings #
-############
+#############
+# variables #
+#############
 
 # select your umask
 export UMASK="0077"
 
-# set your main editor
+# set editor and paper
 export EDITOR="vim"
+export PAPER="less"
+export MANPAGER='less -X'
 
-export PATH="${HOME}/go/bin:${PATH}"
+# GOlang
+export GOPATH=$HOME/.go
+
+# Skip the not really helping Ubuntu global compinit
+skip_global_compinit=1
+
+##############################################################
+# local settings to override
+##############################################################
+[[ -f ${HOME}/.zshenv.local ]] && source ${HOME}/.zshenv.local

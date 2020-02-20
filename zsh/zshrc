@@ -1,22 +1,42 @@
+#! /bin/zsh
 #set -x
 
+###################################################################################
+# Startup Files
+###################################################################################
+# Login files
+# #  level   files          interactive-login    interactive-non-login     script
+# 1 system   /etc/zshenv    X                    X                         X
+# 2 user     ~/.zshenv      X                    X                         X
+# 3 system   /etc/zprofile  X
+# 4 user     ~/.zprofile    X
+# 5 system   /etc/zshrc     X                    X
+# 6 user     ~/.zshrc       X                    X
+# 7 system   /etc/zlogin    X
+# 8 user     ~/.zlogin      X
+
+# Logout Files
+# 1. user)    ~/.zlogout    X
+# 2. system)  /etc/zlogout  X
+
+
+###################################################################################
+# load settings
+###################################################################################
 # load libaries
 for config_file (${HOME}/.config/zsh/lib/*.zsh); do
     source "${config_file}"
 done
 
-autoload -U compinit
-compinit -i
+###################################################################################
+# local settings to override
+###################################################################################
+[[ -f ${HOME}/.zshrc.local ]] && source ${HOME}/.zshrc.local
 
-# PATH
-PATH="${HOME}/bin:${PATH}"
+###################################################################################
+# finish all
+###################################################################################
+autoload -Uz compinit
+compinit
 
-# prompt
-#export VIRTUAL_ENV_DISABLE_PROMPT=1
-#autoload -Uz add-zsh-hook
-## prompt_mimir_cmd() { mimir }
-#prompt_mimir_cmd() { /home/dgo/projects/mimir/build/mimir }
-#add-zsh-hook precmd prompt_mimir_cmd
-
-#prompt_symbol='❯'
-#PROMPT='%(?.%F{magenta}.%F{red})${prompt_symbol}%f '
+zinit cdreplay -q

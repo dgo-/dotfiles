@@ -2,6 +2,8 @@
 !.gitignore
 !*.gitignore
 
+# ignore compiled zsh files
+*.zwc
 
 # vim
 vim/.netrwhist

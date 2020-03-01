@@ -40,6 +40,14 @@ setopt multios
 # show more info about jobs
 setopt long_list_jobs
 
+
+# highlight on tab 
+zstyle ':completion:*' menu select
+
+# reclaim strg+s
+stty stop undef
+stty start undef
+
 #
 # vim mode
 #

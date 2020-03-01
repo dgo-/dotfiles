@@ -1,0 +1,288 @@
+# My config for sway
+# Read `man 5 sway` for a complete reference.
+
+
+#############################################################################
+### Variables
+#############################################################################
+
+# Logo (windows)
+set $win Mod4
+# alt
+set $alt Mod1 
+
+# Your preferred terminal emulator
+set $term x-terminal-emulator
+# Your preferred application launcher
+# Note: it's recommended that you pass the final command to sway
+set $menu dmenu_path | dmenu | xargs swaymsg exec --
+
+# colors
+set $bg-color            #2f343f
+set $inactive-bg-color   #2f343f
+set $text-color          #f3f4f5
+set $inactive-text-color #676E7D
+set $urgent-bg-color     #E53935
+set $bg-active           #101010
+set $bg-active-text      #DADFE9
+set $focus               #E53935
+
+#############################################################################
+### Output configuration
+#############################################################################
+
+# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+
+output * scale 1
+
+#############################################################################
+### Idle configuration
+#############################################################################
+
+# lock screen when go to sleep
+exec swayidle -w before-sleep 'swaylock -f -c 000000'
+
+#############################################################################
+### appearance
+#############################################################################
+
+# default layout tabbed
+workspace_layout tabbed
+
+# default orientation
+default_orientation horizontal
+
+# setup font
+font pango:System San Francisco Display 12px
+
+# new window default border
+default_border pixel 1
+default_floating_border pixel 1
+
+# thin borders
+hide_edge_borders both
+
+# window colors
+#                        border              background                  text                 indicator
+client.focused           $focus              $bg-active                  $text-color          #00ff00
+client.focused_inactive  $bg-active          $bg-active                  $bg-active-text      #00ff00
+client.unfocused         $bg-active          $inactive-bg-color          $inactive-text-color #00ff00
+client.urgent            $urgent-bg-color    $urgent-bg-color            $text-color          #00ff00
+
+#############################################################################
+### Input configuration
+#############################################################################
+# You can get the names of your inputs by running: swaymsg -t get_inputs
+# Read `man 5 sway-input` for more information about this section.
+
+# touchpad
+input "1739:0:Synaptics_TM3276-022" {
+  dwt enabled
+  tap enabled
+  natural_scroll disable
+  middle_emulation enabled
+}
+
+# keyboard load info from env
+
+#############################################################################
+# Status Bar
+#############################################################################
+# Read `man 5 sway-bar` for more information about this section.
+bar {
+  status_command    /home/dgo/projects/myBar/cmd/myBar/myBar
+  position          top
+  mode              dock
+  workspace_buttons yes 
+  tray_output       *
+  font pango:System San Francisco Display,FontAwesome 14px
+
+  colors {
+    background $bg-color
+    separator  #757575
+    #                  border             background         text
+    focused_workspace  $bg-color          $bg-active         $text-color
+    active_workspace   $bg-color          $bg-active         $bg-active-text 
+    inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+    urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+  }
+}
+
+#############################################################################
+### Key bindings
+#############################################################################
+
+# Kill focused window
+bindsym $alt+q kill
+
+# Start your launcher
+bindsym $win+d exec $menu
+
+# Drag floating windows by holding down $win and left mouse button.
+# Resize them with right mouse button + $win.
+# Despite the name, also works for non-floating windows.
+# Change normal to inverse to use left mouse button for resizing and right
+# mouse button for dragging.
+floating_modifier $alt normal
+
+# Reload the configuration file
+bindsym Control+F9 reload
+
+# lock screen
+bindsym F12   exec swaylock -f -c 000000
+bindsym $win+l   exec swaylock -f -c 000000
+
+# Exit sway (logs you out of your Wayland session)
+bindsym Control+Mod1+BackSpace exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+
+# start term
+bindsym $alt+F1 exec kitty
+
+# start firefox
+bindsym $alt+F2 exec google-chrome-stable
+
+# start thunar
+bindsym $alt+F4 exec thunar
+
+# launcher
+bindsym $alt+space exec rofi -font "System San Francisco Display 14" -lines 10 -eh 1 -width 50 -padding 5 -hide-scrollbar  -show run
+
+######################################################
+# Layout stuff:
+
+# You can "split" the current object of your focus with
+# $win+b or $win+v, for horizontal and vertical splits
+# respectively.
+bindsym $alt+h splith
+bindsym $alt+v splitv
+
+# Switch the current container between different layout styles
+bindsym $alt+z layout stacking
+bindsym $alt+t layout tabbed
+bindsym $alt+s layout toggle split
+
+# Make the current focus fullscreen
+bindsym $alt+f fullscreen
+
+# Toggle the current focus between tiling and floating mode
+bindsym $win+Shift+space floating toggle
+
+# Swap focus between the tiling area and the floating area
+bindsym $win+space focus mode_toggle
+
+# Move focus to the parent container
+bindsym $alt+a focus parent
+
+######################################################
+# multimedia keys
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 10%+ unmute
+bindsym XF86AudioLowerVolume exec amixer -q set Master 10%- unmute
+bindsym XF86AudioMute exec amixer -q set Master toggle
+bindsym XF86MonBrightnessUp   exec sudo light -A 10 
+bindsym XF86MonBrightnessDown exec sudo light -U 10 
+
+######################################################
+# Workspaces:
+
+set $ws1 "1  "
+set $ws2 "2 "
+set $ws3 "3  "
+set $ws4 "4  "
+set $ws5 "5  "
+set $ws6 "6  "
+set $ws7 "7  "
+set $ws8 "8  "
+set $ws9 "9  "
+set $ws0 "0 "
+
+######################################################
+# Moving around:
+
+# move focus around
+bindsym $alt+Left focus left
+bindsym $alt+Down focus down
+bindsym $alt+Up focus up
+bindsym $alt+Right focus right
+
+# Switch to workspace
+bindsym $alt+1 workspace $ws1
+bindsym $alt+2 workspace $ws2
+bindsym $alt+3 workspace $ws3
+bindsym $alt+4 workspace $ws4
+bindsym $alt+5 workspace $ws5
+bindsym $alt+6 workspace $ws6
+bindsym $alt+7 workspace $ws7
+bindsym $alt+8 workspace $ws8
+bindsym $alt+9 workspace $ws9
+bindsym $alt+0 workspace $ws0
+
+# Move focused container to workspace
+bindsym $win+1 move container to workspace $ws1
+bindsym $win+2 move container to workspace $ws2
+bindsym $win+3 move container to workspace $ws3
+bindsym $win+4 move container to workspace $ws4
+bindsym $win+5 move container to workspace $ws5
+bindsym $win+6 move container to workspace $ws6
+bindsym $win+7 move container to workspace $ws7
+bindsym $win+8 move container to workspace $ws8
+bindsym $win+9 move container to workspace $ws9
+bindsym $win+0 move container to workspace $ws0
+
+# move windows
+bindsym $win+Left move left
+bindsym $win+Right move right
+bindsym $win+Down move down
+bindsym $win+Up move up
+
+# move to window to diffrent display
+bindsym $win+Shift+Left  move container to output left
+bindsym $win+Shift+Right move container to output right
+bindsym $win+Shift+Up    move container to output up
+bindsym $win+Shift+Down  move container to output down
+
+# move workspace to diffrent display
+bindsym $alt+Shift+Left  move workspace to output left
+bindsym $alt+Shift+Right move workspace to output right
+bindsym $alt+Shift+Up    move workspace to output up
+bindsym $alt+Shift+Down  move workspace to output down
+
+# tab
+bindsym $alt+Tab      focus right
+bindsym $alt+Shift+Tab  focus left
+
+#############################################################################
+### Resizing containers:
+#############################################################################
+mode "resize" {
+    # with arrow keys
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $win+r mode "resize"
+
+#############################################################################
+### apps
+#############################################################################
+
+# assign apps to workspaces
+assign [class="Keepassx"] $ws4
+assign [class="keepassx"] $ws4
+
+# make some apps floating
+for_window [class="rdesktop"] floating disable
+for_window [class="Sxiv"] floating enable
+for_window [class="sxiv"] floating enable 
+for_window [class="Thunar"] floating enable 
+for_window [class="thunar"] floating enable 
+
+#############################################################################
+### Include
+#############################################################################
+include /etc/sway/config.d/*

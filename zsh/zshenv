@@ -16,6 +16,10 @@ export GOPATH=$HOME/.go
 # Skip the not really helping Ubuntu global compinit
 skip_global_compinit=1
 
+# language
+export XKB_DEFAULT_LAYOUT=de,us
+export XKB_DEFAULT_OPTIONS=grp:alt_shift_toggle
+
 ##############################################################
 # local settings to override
 ##############################################################

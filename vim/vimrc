@@ -55,7 +55,9 @@ Plug 'itchyny/lightline.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'dense-analysis/ale'
 Plug 'maximbaz/lightline-ale'
-Plug 'preservim/nerdtree'
+
+" load nerdtree only if needed
+Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'godlygeek/tabular'
 Plug 'ervandew/supertab'
 Plug 'sheerun/vim-polyglot'
@@ -63,6 +65,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-fugitive'
 
+" also install need go binaries
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 

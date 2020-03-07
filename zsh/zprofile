@@ -8,14 +8,16 @@ export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 # start wayland
 if [ "$(tty)" = "/dev/tty1" ]; then
   #export GDK_BACKEND=wayland
+  export MOZ_ENABLE_WAYLAND=1
   export CLUTTER_BACKEND=wayland
-  #export QT_QPA_PLATFORM=wayland-egl
+  export QT_QPA_PLATFORM=wayland-egl
   export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
   export QT_WAYLAND_FORCE_DPI=phyiscal
   export ECORE_EVAS_EVAS_ENGINE=wayland_egl
   export ELM_ENGINE=wayland_egl
   export SDL_VIDEODRIVER=wayland
   export _JAVA_AWT_WM_NONREPARENTING=1
+  export KITTY_ENABLE_WAYLAND=1
 
 	exec sway
 fi

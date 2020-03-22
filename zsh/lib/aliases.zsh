@@ -25,5 +25,3 @@ alias ..='cd ..'
 # cd
 alias cd..='cd ..'
 
-# PATH
-PATH="${HOME}/bin:${PATH}"

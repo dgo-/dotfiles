@@ -7,6 +7,11 @@ export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 
 # start wayland
 if [ "$(tty)" = "/dev/tty1" ]; then
+  # keyboard
+  export XKB_DEFAULT_LAYOUT=de,us
+  export XKB_DEFAULT_OPTIONS=grp:alt_shift_toggle
+
+  # use wayland variables
   #export GDK_BACKEND=wayland
   export MOZ_ENABLE_WAYLAND=1
   export CLUTTER_BACKEND=wayland

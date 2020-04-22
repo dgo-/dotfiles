@@ -10,14 +10,13 @@ TARGET   = $(shell uname -s | tr '[A-Z]' '[a-z]' 2>/dev/null || echo unknown)
 all: $(TARGET)
 
 # diffrent operation systems
-darwin: base tmux vim zsh mutt puppet-lint perlcriticrc 
+darwin: _bae_vim _zsh  
 
 linux: _base _vim _zsh _i3 _X _fonts _systemd _editorconfig
 
 # configurations
 _base:
 	mkdir -p $(DST_ROOT)/.config
-	git submodule init && git submodule update
 
 _tmux:
 	ln -fsn $(SRC_ROOT)/tmux/tmux.conf  $(DST_ROOT)/.tmux.conf

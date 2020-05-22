@@ -40,7 +40,8 @@ autoload -Uz _zinit
 ###################################################################################
 
 # just load the .env file
-ZSH_DOTENV_PROMPT=false
+export ZSH_DOTENV_PROMPT=false
+export KUBE_PS1_SYMBOL_ENABLE=false
 
 ###################################################################################
 # look and feel
@@ -56,6 +57,9 @@ zinit ice atclone"dircolors -b LS_COLORS > clrs.zsh" \
     atpull'%atclone' pick"clrs.zsh" nocompile'!' \
     atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”'
 zinit light trapd00r/LS_COLORS
+
+zinit light jonmosco/kube-ps1
+PROMPT='$(kube_ps1) '$PROMPT
 
 ###################################################################################
 # functions

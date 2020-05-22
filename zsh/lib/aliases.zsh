@@ -6,7 +6,7 @@ alias history='fc -l 1'
 # command helps
 
 # ls
-alias ls='ls --color=auto'
+#alias ls='ls --color=auto'
 alias lsa='ls -lah'
 alias l='ls -la'
 alias ll='ls -l'
@@ -25,3 +25,5 @@ alias ..='cd ..'
 # cd
 alias cd..='cd ..'
 
+# kubectl
+alias k='kubectl'

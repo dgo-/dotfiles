@@ -70,6 +70,7 @@ bindkey '^w' backward-kill-word
 # ctrl-r starts searching history backward
 bindkey '^r' history-incremental-search-backward
 
+zle -N edit-command-line
 autoload -Uz edit-command-line
 bindkey -M vicmd 'e' edit-command-line
 

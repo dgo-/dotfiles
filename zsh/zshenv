@@ -5,11 +5,6 @@
 # select your umask
 export UMASK="0077"
 
-# set editor and paper
-export EDITOR="vim"
-export PAPER="less"
-export MANPAGER='less -X'
-
 # GOlang
 export GOPATH="${HOME}/.go"
 export GOBIN="${GOPATH}/bin"
@@ -28,7 +23,7 @@ export ZSH_DOTENV_PROMPT=false # load .env file without asking
 export KUBE_PS1_SYMBOL_ENABLE=false # no symbol
 export KUBE_PS1_ENABLED="off"       # default off 
 
-##############################################################
+#############################################################
 # local settings to override
 ##############################################################
 [[ -f ${HOME}/.zshenv.local ]] && source ${HOME}/.zshenv.local

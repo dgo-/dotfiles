@@ -36,15 +36,7 @@ autoload -Uz _zinit
 ### End of Zinit installer's chunk
 
 ###################################################################################
-# plugin settings
-###################################################################################
-
-# just load the .env file
-export ZSH_DOTENV_PROMPT=false
-export KUBE_PS1_SYMBOL_ENABLE=false
-
-###################################################################################
-# look and feel
+# load plugins
 ###################################################################################
 zinit light zdharma/fast-syntax-highlighting
 
@@ -59,11 +51,7 @@ zinit ice atclone"dircolors -b LS_COLORS > clrs.zsh" \
 zinit light trapd00r/LS_COLORS
 
 zinit light jonmosco/kube-ps1
-PROMPT='$(kube_ps1) '$PROMPT
-
-###################################################################################
-# functions
-###################################################################################
+PROMPT='$(kube_ps1)'$PROMPT
 
 # extract archive .zip
 zinit light alexrochas/zsh-extract

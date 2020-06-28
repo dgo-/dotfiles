@@ -1,5 +1,5 @@
 ##########################################
-# ls
+# ls => exa
 
 # exchange ls with exa 
 # https://the.exa.website/
@@ -23,6 +23,31 @@ alias ll='ls -l'
 
 # mistakes
 alias sl=ls
+
+##########################################
+# cat/less/man => bat 
+
+# exchange cat/less with bat
+# https://github.com/sharkdp/bat
+command_exists "bat"
+if [ "${?}" -eq "0" ]; then
+  alias cat='bat -pp'
+  alias less='bat --paging=always'
+
+  # override MANPAGER
+  export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
+fi
+
+##########################################
+# grep => ripgrep 
+
+# exchange grep with ripgrep
+# https://github.com/BurntSushi/ripgrep
+command_exists "rg"
+if [ "${?}" -eq "0" ]; then
+  alias grep='rg'
+fi
 
 ##########################################
 # mkdir

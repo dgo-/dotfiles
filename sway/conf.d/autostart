@@ -1,0 +1,6 @@
+exec light -I
+exec ssh-agent -a "${SSH_AUTH_SOCK}"
+exec nm-applet --indicator
+exec mako
+exec slack
+

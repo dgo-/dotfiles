@@ -1,0 +1,30 @@
+######################################################
+# multimedia keys
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 10%+ unmute
+bindsym XF86AudioLowerVolume exec amixer -q set Master 10%- unmute
+bindsym XF86AudioMute exec amixer -q set Master toggle
+bindsym XF86MonBrightnessUp   exec light -A 10 && light -O
+bindsym XF86MonBrightnessDown exec light -U 10 && light -O
+
+# start term
+bindsym $alt+F1 exec kitty
+
+# start firefox
+bindsym $alt+F2 exec google-chrome-beta -enable-features=UseOzonePlatform --ozone-platform=wayland
+
+# start thunar
+bindsym $alt+F4 exec thunar
+
+# launcher
+bindsym $alt+space exec rofi -font "System San Francisco Display 14" -lines 10 -eh 1 -width 50 -padding 5 -hide-scrollbar  -show run
+
+
+# wddisplays
+bindsym $alt+p exec wdisplays
+
+# Screenshot
+bindsym --locked $alt+Print exec grim "Pictures/screenshot@$(date '+%Y.%m.%d-%H:%M:%S').png" && notify-send "Screenshot taken" -i camera-photo-symbolic
+#Screenshot selected area
+bindsym $alt+Shift+Print exec 'slurp | grim -g - "Pictures/screenshot@$(date '+%Y.%m.%d-%H:%M:%S').png" && notify-send "Area screenshot taken" -i camera-photo-symbolic
+#Screenchot whole window window
+#bindsym $alt+Shift+Print exec /home/rhys/.config/sway/scrotwindow.sh

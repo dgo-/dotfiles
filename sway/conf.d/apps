@@ -1,0 +1,16 @@
+#############################################################################
+### apps
+#############################################################################
+
+# assign apps to workspaces
+assign [class="Keepassx"] $ws4
+assign [class="keepassx"] $ws4
+
+# make some apps floating
+for_window [class="rdesktop"] floating disable
+for_window [class="Sxiv"] floating enable
+for_window [class="sxiv"] floating enable 
+for_window [class="Thunar"] floating enable 
+for_window [class="thunar"] floating enable 
+for_window [class="Wine"] floating enable 
+for_window [class="wine"] floating enable

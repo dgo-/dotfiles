@@ -1,0 +1,33 @@
+########################################
+# wayland
+
+# QT
+export QT_QPA_PLATFORMTHEME=qt5ct
+export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+export QT_WAYLAND_FORCE_DPI=phyiscal
+
+# XDG
+XDG_SESSION_TYPE=wayland
+
+# mozilla
+export MOZ_ENABLE_WAYLAND=1
+
+# kitty
+export KITTY_ENABLE_WAYLAND=1
+
+# java
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+# GTK
+#export GDK_BACKEND=wayland
+
+# some other
+export SDL_VIDEODRIVER=wayland
+export CLUTTER_BACKEND=wayland
+export ELM_ENGINE=wayland_egl
+export ECORE_EVAS_EVAS_ENGINE=wayland_egl
+
+########################################
+# keyboard
+export XKB_DEFAULT_LAYOUT=de,us
+export XKB_DEFAULT_OPTIONS=grp:alt_shift_toggle

@@ -1,0 +1,27 @@
+#############################################################################
+# Status Bar
+#############################################################################
+# Read `man 5 sway-bar` for more information about this section.
+
+bar {
+  swaybar_command waybar
+}
+
+#bar {
+#  status_command    /home/dgo/projects/myBar/main
+#  position          top
+#  mode              dock
+#  workspace_buttons yes
+#  tray_output       *
+#  font pango:System San Francisco Display,FontAwesome 14px
+#
+#  colors {
+#    background $bg-color
+#    separator  #757575
+#    #                  border             background         text
+#    focused_workspace  $bg-color          $bg-active         $text-color
+#    active_workspace   $bg-color          $bg-active         $bg-active-text 
+#    inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+#    urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+#  }
+#}

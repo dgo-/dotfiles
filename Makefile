@@ -12,7 +12,7 @@ all: $(TARGET)
 # diffrent operation systems
 darwin: _bae_vim _zsh  
 
-linux: _base _vim _zsh _i3 _X _fonts _systemd _editorconfig
+linux: _base _vim _zsh _sway _X _fonts _systemd _editorconfig
 
 # configurations
 _base:
@@ -33,6 +33,9 @@ _zsh:
 
 _i3:
 	ln    -fsn $(SRC_ROOT)/i3  $(DST_ROOT)/.config/i3
+
+_sway:
+	ln    -fsn $(SRC_ROOT)/sway  $(DST_ROOT)/.config/sway
 
 _X:
 	ln -fsn $(SRC_ROOT)/X $(DST_ROOT)/.config/X

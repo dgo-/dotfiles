@@ -56,6 +56,9 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'dense-analysis/ale'
 Plug 'maximbaz/lightline-ale'
 
+" icons
+Plug 'ryanoasis/vim-devicons'
+
 " load nerdtree only if needed
 Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'godlygeek/tabular'
@@ -238,3 +241,11 @@ let g:lightline.active = {
     \            [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ]
     \] }
 
+
+
+
+" Jump between Windows
+nnoremap <C-Down> <C-W><C-J>
+nnoremap <C-Up> <C-W><C-K>
+nnoremap <C-Right> <C-W><C-L>
+nnoremap <C-Left> <C-W><C-H>

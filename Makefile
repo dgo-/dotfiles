@@ -10,7 +10,7 @@ TARGET   = $(shell uname -s | tr '[A-Z]' '[a-z]' 2>/dev/null || echo unknown)
 all: $(TARGET)
 
 # diffrent operation systems
-darwin: _bae_vim _zsh  
+darwin: _base_vim _zsh  
 
 linux: _base _vim _zsh _sway _X _fonts _systemd _editorconfig
 

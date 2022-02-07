@@ -22,6 +22,7 @@ vim.opt.cursorline    = true -- highlight the current line
 vim.opt.scrolloff     = 3 -- Minimal number of screen lines to keep above and below the cursor
 vim.opt.sidescrolloff = 5 -- The minimal number of columns to scroll horizontally
 
+--[[
 vim.opt.list = true -- enable listchars
 vim.opt.listchars = {
   eol     = '↵',
@@ -30,7 +31,7 @@ vim.opt.listchars = {
   extends = '>',
   space   = '␣'
 }
-
+]]--
 -------------------------------------------------------------------------
 -- files
 vim.opt.backup   = false                                -- don't create backup files

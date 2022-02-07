@@ -32,13 +32,13 @@ set noerrorbells
 set novisualbell
 set t_vb=
 set tm=500
+set belloff=all
+
 
 let $LANG='en'                      " english
 set langmenu=en                     " english
 map <leader>sc :setlocal spell!<cr> " spell checking
 
-" start pathogen
-"execute pathogen#infect()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => plugin manager
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -249,3 +249,6 @@ nnoremap <C-Down> <C-W><C-J>
 nnoremap <C-Up> <C-W><C-K>
 nnoremap <C-Right> <C-W><C-L>
 nnoremap <C-Left> <C-W><C-H>
+
+
+

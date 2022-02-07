@@ -81,7 +81,7 @@ return require('packer').startup(function(use)
 
    -- colorscheme
    use {
-     'olimorris/onedarkpro.nvim',
+     'folke/tokyonight.nvim',
      config = get_config("colorscheme"),
    }
 

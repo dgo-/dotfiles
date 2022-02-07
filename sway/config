@@ -8,7 +8,7 @@
 # Logo (windows)
 set $win Mod4
 # alt
-set $alt Mod1 
+set $alt Mod1
 
 # Your preferred terminal emulator
 set $term x-terminal-emulator
@@ -121,14 +121,14 @@ bindsym $alt+a focus parent
 
 set $ws1 "1  "
 set $ws2 "2  "
-set $ws3 "3  "
+set $ws3 "3 "
 set $ws4 "4  "
-set $ws5 "5  "
-set $ws6 "6  "
+set $ws5 "5 "
+set $ws6 "6 "
 set $ws7 "7  "
 set $ws8 "8  "
 set $ws9 "9  "
-set $ws0 "0  "
+set $ws0 "0 "
 
 ######################################################
 # Moving around:
@@ -189,7 +189,9 @@ bindsym $alt+Shift+Tab  focus left
 ### Include
 #############################################################################
 include ~/.config/sway/conf.d/*
-include ~/.config/sway/host.d/`hostname`
+
+# overwrite default input output settings
+include ~/.config/sway/host.d/$(hostname)
 
 
 
@@ -210,3 +212,11 @@ smart_borders no_gaps
 
 # hide status bar if only one window exists tabbed/stacked
 hide_edge_borders --i3 smart_no_gaps
+
+
+
+#############################################################################
+### systemd
+#############################################################################
+exec "systemctl --user import-environment; systemctl --user start sway-session.target"
+

@@ -1,0 +1,20 @@
+input type:touchpad {
+  dwt enabled
+  tap enabled
+  natural_scroll disabled
+  middle_emulation enabled
+  click_method button_areas
+  drag enabled
+  dwt disabled
+}
+
+input type:keyboard {
+  xkb_layout de(nodeadkeys),eu
+  xkb_options grp:alt_shift_toggle
+}
+
+
+output * {
+  scale 1.0
+  bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+}

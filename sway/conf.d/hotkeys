@@ -1,13 +1,23 @@
 ######################################################
 # multimedia keys
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 10%+ unmute
-bindsym XF86AudioLowerVolume exec amixer -q set Master 10%- unmute
-bindsym XF86AudioMute exec amixer -q set Master toggle
-bindsym XF86MonBrightnessUp   exec light -A 10 && light -O
-bindsym XF86MonBrightnessDown exec light -U 10 && light -O
+bindsym XF86AudioRaiseVolume  exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume  exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute         exec pactl set-sink-mute   @DEFAULT_SINK@   toggle
+bindsym XF86AudioMicMute      exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+bindsym XF86MonBrightnessUp   exec brightnessctl s +10%
+bindsym XF86MonBrightnessDown exec brightnessctl s 10%-
+
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+bindsym XF86Search exec dmenu_run
+
 
 # start term
 bindsym $alt+F1 exec kitty
+bindsym $alt+Return exec alacritty
 
 # start firefox
 bindsym $alt+F2 exec google-chrome-beta -enable-features=UseOzonePlatform --ozone-platform=wayland
@@ -16,7 +26,8 @@ bindsym $alt+F2 exec google-chrome-beta -enable-features=UseOzonePlatform --ozon
 bindsym $alt+F4 exec thunar
 
 # launcher
-bindsym $alt+space exec rofi -font "System San Francisco Display 14" -lines 10 -eh 1 -width 50 -padding 5 -hide-scrollbar  -show run
+# bindsym $alt+space exec rofi -font "System San Francisco Display 14" -lines 10 -eh 1 -width 50 -padding 5 -hide-scrollbar  -show run
+bindsym $alt+space exec albert toggle
 
 
 # wddisplays

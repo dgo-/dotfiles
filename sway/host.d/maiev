@@ -5,20 +5,39 @@
 # Read `man 5 sway-input` for more information about this section.
 
 # touchpad
-input "1739:0:Synaptics_TM3276-022" {
-  dwt enabled
-  tap enabled
-  natural_scroll disable
-  middle_emulation enabled
-}
+#input "1739:0:Synaptics_TM3276-022" {
+#  dwt enabled
+#  tap enabled
+#  natural_scroll disable
+#  middle_emulation enabled
+#}
 
-# keyboard load info from env
+#input "6058:20564:ThinkPad_Extra_Buttons" {
+#  xkb_layout de(nodeadkeys),us
+#  xkb_options grp:alt_shift_toggle
+#}
+
+input "1452:591:Keychron_Keychron_C1" {
+  xkb_layout eu
+  xkb_options grp:alt_shift_toggle
+}
 
 #############################################################################
 ### Output configuration
 #############################################################################
 
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+#output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
-output * scale 1.0
+#output * scale 1.0
+#
+#
+output "Chimei Innolux Corporation 0x14C9 0x00000000" {
+  scale 1.0
+  position 0,0
+}
+
+output "Samsung Electric Company LU28R55 H4ZN100927" {
+  scale 1.5
+  position 1920,0
+}

@@ -10,7 +10,17 @@ assign [class="keepassx"] $ws4
 for_window [class="rdesktop"] floating disable
 for_window [class="Sxiv"] floating enable
 for_window [class="sxiv"] floating enable 
+
+
 for_window [class="Thunar"] floating enable 
 for_window [class="thunar"] floating enable 
+for_window [app_id="thunar"] floating enable 
+
 for_window [class="Wine"] floating enable 
 for_window [class="wine"] floating enable
+
+
+for_window [class="MEGAsync"] floating enable
+for_window [title="MEGAsync"] floating enable
+for_window [instance="megasync"] floating enable
+for_window [class="megasync"] floating enable

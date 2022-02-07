@@ -1,6 +1,0 @@
-[Unit]
-Description=set background image
-
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/feh --bg-fill --no-xinerama --randomize  -r ${HOME}/.wallpaper/

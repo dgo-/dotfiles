@@ -6,4 +6,4 @@ ExecStart=/usr/bin/blueman-applet
 Restart=on-abort
 
 [Install]
-WantedBy=x.target
+WantedBy=sway-session.target

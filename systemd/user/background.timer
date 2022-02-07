@@ -1,8 +1,0 @@
-[Unit]
-Description=Change the wallpaper every 
-
-[Timer]
-OnCalendar=*:0/10
-
-[Install]
-WantedBy=x.target

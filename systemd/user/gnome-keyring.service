@@ -1,9 +1,0 @@
-[Unit]
-Description=gnome-keyring
-
-[Service]
-ExecStart=/usr/bin/gnome-keyring-daemon -f -s -c secrets
-Restart=on-abort
-
-[Install]
-WantedBy=x.target

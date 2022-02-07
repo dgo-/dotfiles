@@ -1,9 +1,0 @@
-[Unit]
-Description=compton
-
-[Service]
-ExecStart=/usr/bin/compton
-Restart=on-abort
-
-[Install]
-WantedBy=x.target

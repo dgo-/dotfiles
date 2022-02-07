@@ -20,6 +20,10 @@
 # 2. system)  /etc/zlogout  X
 
 ###################################################################################
+# load profiling (comment in to profile zsh)
+#zmodload zsh/zprof
+
+###################################################################################
 # zinit (plugin manager)
 ###################################################################################
 ### Added by Zinit's installer
@@ -80,3 +84,6 @@ autoload -Uz compinit
 compinit
 
 zinit cdreplay -q
+
+# profiling (comment in to profile zsh)
+#zprof

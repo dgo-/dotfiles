@@ -1,7 +1,10 @@
 # zprofile
 
 # ssh agent socket
-export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
+if [ -z "$SSH_AUTH_SOCK" ] ; then
+  eval `ssh-agent -s`
+  ssh-add
+fi
 
 # start desktop env 
 

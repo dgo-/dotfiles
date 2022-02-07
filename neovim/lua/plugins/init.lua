@@ -15,9 +15,6 @@ return require('packer').startup(function(use)
    -----------------------------------------------------------------------------------
    -- start installing plugins
 
-   -- filetype detection
-   --use("nathom/filetype.nvim")
-
    -- neoscroll (smooth scrolling)
    use {
     "karb94/neoscroll.nvim",
@@ -43,6 +40,25 @@ return require('packer').startup(function(use)
 
   -- snippets
   use {"hrsh7th/vim-vsnip", config = get_config("vsnip")}
+
+  -- telescope
+  use {
+      "nvim-telescope/telescope.nvim",
+      requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}},
+      config = get_config("telescope")
+  }
+
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use {"nvim-telescope/telescope-file-browser.nvim"}
+
+  -- file browser
+  use {
+      'kyazdani42/nvim-tree.lua',
+      requires = {
+        'kyazdani42/nvim-web-devicons', -- optional, for file icon
+      },
+      config =  get_config("tree")
+  }
 
   -- lsp
   use {
@@ -92,10 +108,14 @@ return require('packer').startup(function(use)
        requires = {"kyazdani42/nvim-web-devicons", opt = true}
    }
 
+  -- keymaps
    use {
     "folke/which-key.nvim",
     config = get_config("which")
    }
+
+  -- projects
+  use {"ahmedkhalf/project.nvim", config = get_config("project")}
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

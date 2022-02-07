@@ -8,9 +8,9 @@ if [ "${?}" -eq "0" ]; then
   alias ls='exa'
 else 
   # if no exa can be used make ls colorful
-  if [ "${OSTYPE}" == "linux-gnu" ]; then
+  if [ "${OSTYPE}" = "linux-gnu" ]; then
     alias ls='ls --color=auto'
-  elif [ "${OSTYPE}" == "darwin" ]; then
+  elif [ "${OSTYPE}" = "darwin" ]; then
     export CLICOLOR=1
     export LSCOLORS=GxFxCxDxBxegedabagaced
   fi

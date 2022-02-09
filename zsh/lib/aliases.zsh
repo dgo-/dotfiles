@@ -50,6 +50,13 @@ if [ "${?}" -eq "0" ]; then
 fi
 
 ##########################################
+# neovim
+command_exists "nvim"
+if [ "${?}" -eq "0" ]; then
+  alias vim=nvim
+fi
+
+##########################################
 # mkdir
 alias mkdir='mkdir -p'
 alias mdkir='mkdir -p'

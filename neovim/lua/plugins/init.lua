@@ -76,7 +76,7 @@ return require('packer').startup(function(use)
     use {
         "folke/trouble.nvim",
         requires = "kyazdani42/nvim-web-devicons",
-        cmd = {"TroubleToggle", "Trouble"},
+        -- cmd = {"TroubleToggle", "Trouble"},
         config = get_config("trouble")
     }
 
@@ -109,12 +109,49 @@ return require('packer').startup(function(use)
     -- comments
     use {'numToStr/Comment.nvim', config = get_config("comment")}
 
--- gitsigns
-use {
-    "lewis6991/gitsigns.nvim",
-    requires = {"nvim-lua/plenary.nvim"},
-    config = get_config("gitsigns")
-}
+    -- gitsigns
+    use {
+        "lewis6991/gitsigns.nvim",
+        requires = {"nvim-lua/plenary.nvim"},
+        config = get_config("gitsigns")
+    }
+
+    use {
+        "simrat39/symbols-outline.nvim",
+        cmd = {"SymbolsOutline"},
+        config = get_config("symbols")
+    }
+
+    use {
+        "lukas-reineke/indent-blankline.nvim",
+        event = "BufReadPre",
+        config = get_config("indent-blankline")
+    }
+
+    use {
+        "akinsho/nvim-toggleterm.lua",
+        keys = {"<C-y>", "<leader>fl", "<leader>gt"},
+        config = get_config("toggleterm")
+    }
+
+    use {
+        "folke/todo-comments.nvim",
+        requires = "nvim-lua/plenary.nvim",
+        config = get_config("todo")
+    }
+
+    use {"tweekmonster/startuptime.vim"}
+
+    use {
+      "cuducos/yaml.nvim",
+      ft = {"yaml"}, -- optional
+      requires = {
+        "nvim-treesitter/nvim-treesitter",
+        "nvim-telescope/telescope.nvim" -- optional
+      },
+    }
+
+  use {"rcarriga/nvim-notify", config = get_config("notify")}
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

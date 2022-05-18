@@ -10,9 +10,9 @@ TARGET   = $(shell uname -s | tr '[A-Z]' '[a-z]' 2>/dev/null || echo unknown)
 all: $(TARGET)
 
 # diffrent operation systems
-darwin: _base _vim _zsh  
+darwin: _base _vim _zsh _terraform
 
-linux: _base _vim _zsh _sway _X _fonts _systemd _editorconfig
+linux: _base _vim _zsh _sway _X _fonts _systemd _editorconfig _terraform
 
 # configurations
 _base:
@@ -40,6 +40,9 @@ _sway:
 _X:
 	ln -fsn $(SRC_ROOT)/X $(DST_ROOT)/.config/X
 	ln -fsn $(SRC_ROOT)/X/mimeapps.list   $(DST_ROOT)/.config/mimeapps.list
+
+_terraform:
+	ln -fsn $(SRC_ROOT)/terraform/terraformrc     $(DST_ROOT)/.terraformrc
 
 fluxbox:
 	ln -fsn $(SRC_ROOT)/fluxbox $(DST_ROOT)/.fluxbox

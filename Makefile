@@ -43,6 +43,7 @@ _X:
 
 _terraform:
 	ln -fsn $(SRC_ROOT)/terraform/terraformrc     $(DST_ROOT)/.terraformrc
+	mkdir -p $(DST_ROOT)/.terraform.d/plugin-cache
 
 fluxbox:
 	ln -fsn $(SRC_ROOT)/fluxbox $(DST_ROOT)/.fluxbox

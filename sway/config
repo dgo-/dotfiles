@@ -175,11 +175,11 @@ bindsym $win+Shift+Right move container to output right
 bindsym $win+Shift+Up    move container to output up
 bindsym $win+Shift+Down  move container to output down
 
-# move workspace to diffrent display
-bindsym $alt+Shift+Left  move workspace to output left
-bindsym $alt+Shift+Right move workspace to output right
-bindsym $alt+Shift+Up    move workspace to output up
-bindsym $alt+Shift+Down  move workspace to output down
+# move workspace to diffrent displaybindsym $alt+Shift+Left  move workspace to output left
+bindsym Control+Shift+Left  move workspace to output left
+bindsym Control+Shift+Right move workspace to output right
+bindsym Control+Shift+Up    move workspace to output up
+bindsym Control+Shift+Down  move workspace to output down
 
 # tab
 bindsym $alt+Tab      focus right

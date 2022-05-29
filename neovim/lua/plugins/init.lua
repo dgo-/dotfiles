@@ -87,6 +87,7 @@ return require('packer').startup(function(use)
     use {
         "akinsho/bufferline.nvim",
         requires = {'kyazdani42/nvim-web-devicons'},
+        branch = 'main',
         config = get_config("bufferline")
     }
 
@@ -131,6 +132,7 @@ return require('packer').startup(function(use)
     use {
         "akinsho/nvim-toggleterm.lua",
         keys = {"<C-y>", "<leader>fl", "<leader>gt"},
+        branch = 'main',
         config = get_config("toggleterm")
     }
 

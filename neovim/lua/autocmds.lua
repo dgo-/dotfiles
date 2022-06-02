@@ -11,7 +11,7 @@ local match_filetype = function(filetypes)
   return false
 end
 
-vim.api.nvim_create_augroup("TrimWhiteSpace", { clear = true })
+vim.api.nvim_create_augroup("Trim", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePre", {
     callback = function()
       disabled_filetypes = {"markdown"}
@@ -23,14 +23,15 @@ vim.api.nvim_create_autocmd("BufWritePre", {
       end
     end,
     desc = "CleanupFile",
-    group = "TrimWhiteSpace"
+    group = "Trim"
 })
 
 -------------------------------------------------------------------------------
 -- Prevent new line to also start with a comment
-vim.api.nvim_exec([[
-  augroup NewLineComment
-    au!
-    autocmd BufEnter * set formatoptions-=cro
-  augroup END
-]], false)
+vim.api.nvim_create_augroup("formatoptions", {clear = true})
+vim.api.nvim_create_autocmd("BufEnter", {
+  callback = function ()
+    vim.cmd [[set formatoptions-=cro]]
+  end,
+  group = "formatoptions"
+})

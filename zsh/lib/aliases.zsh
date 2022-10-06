@@ -1,12 +1,12 @@
 ##########################################
 # ls => exa
 
-# exchange ls with exa 
+# exchange ls with exa
 # https://the.exa.website/
 command_exists "exa"
 if [ "${?}" -eq "0" ]; then
   alias ls='exa'
-else 
+else
   # if no exa can be used make ls colorful
   if [ "${OSTYPE}" = "linux-gnu" ]; then
     alias ls='ls --color=auto'
@@ -25,7 +25,7 @@ alias ll='ls -l'
 alias sl=ls
 
 ##########################################
-# cat/less/man => bat 
+# cat/less/man => bat
 
 # exchange cat/less with bat
 # https://github.com/sharkdp/bat
@@ -40,7 +40,7 @@ if [ "${?}" -eq "0" ]; then
 fi
 
 ##########################################
-# grep => ripgrep 
+# grep => ripgrep
 
 # exchange grep with ripgrep
 # https://github.com/BurntSushi/ripgrep
@@ -54,6 +54,7 @@ fi
 command_exists "nvim"
 if [ "${?}" -eq "0" ]; then
   alias vim=nvim
+  alias nv=nvim
 fi
 
 ##########################################
@@ -77,3 +78,10 @@ alias k='kubectl'
 ##########################################
 # ssh
 alias ssh='TERM=xterm ssh'
+
+##########################################
+# directories
+# cd ~bin
+hash -d bin=$HOME/bin
+hash -d go=$GOPATH
+hash -d tmp=/tmp

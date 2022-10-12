@@ -145,15 +145,17 @@ lspconfig.yamlls.setup {
         ["https://json.schemastore.org/dependabot-2.0.json"] = ".github/dependabot.{yml,yaml}",
         ["https://json.schemastore.org/gitlab-ci"] = "*gitlab-ci*.{yml,yaml}",
         ["https://json.schemastore.org/golangci-lint.json"] = ".golangci.{yml,yaml}",
+        ["https://goreleaser.com/static/schema.json"] = ".goreleaser.{yaml,yml}",
         ["https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json"] = "*api*.{yml,yaml}",
         ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "*docker-compose*.{yml,yaml}",
         ["https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json"] = "*flow*.{yml,yaml}"
       },
       format = {enabled = false},
-      validate = false, -- TODO: conflicts between Kubernetes resources and kustomization.yaml
+      validate = false,  -- TODO: conflicts between Kubernetes resources and kustomization.yaml
       completion = true,
       hover = true
-    }
+    },
+  redhat = { telemetry = { enabled = false } },
   },
   flags = {debounce_text_changes = 150}
 }

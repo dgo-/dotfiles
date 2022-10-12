@@ -11,12 +11,14 @@ function get_config(name)
     return string.format("require(\"plugins/configs/%s\")", name)
 end
 
+
 return require('packer').startup(function(use)
     -- My plugins here
     use {"wbthomason/packer.nvim"}
 
     -----------------------------------------------------------------------------------
     -- start installing plugins
+    use 'lewis6991/impatient.nvim'
 
     -- neoscroll (smooth scrolling)
     use {"karb94/neoscroll.nvim", config = get_config("neoscroll")}
@@ -24,20 +26,20 @@ return require('packer').startup(function(use)
     -- hightlight colors
     use {"norcalli/nvim-colorizer.lua", config = get_config("colorizer")}
 
+    -- snippets
+    use { 'L3MON4D3/LuaSnip' }
+
     -- completion
     use {
         "hrsh7th/nvim-cmp",
         requires = {
             {"hrsh7th/cmp-nvim-lsp"}, {"hrsh7th/cmp-buffer"},
             {"hrsh7th/cmp-path"}, {"hrsh7th/cmp-cmdline"},
-            {"hrsh7th/cmp-vsnip"},
-            {"f3fora/cmp-spell", {"hrsh7th/cmp-calc"}, {"onsails/lspkind-nvim"}}
+            {"f3fora/cmp-spell"}, {"hrsh7th/cmp-calc"}, {"onsails/lspkind-nvim"},
+            {"saadparwaiz1/cmp_luasnip"}
         },
         config = get_config("cmp")
     }
-
-    -- snippets
-    use {"hrsh7th/vim-vsnip", config = get_config("vsnip")}
 
     -- telescope
     use {
@@ -52,6 +54,8 @@ return require('packer').startup(function(use)
     -- file browser
     use {
         'kyazdani42/nvim-tree.lua',
+        opt = true,
+        cmd = {'NvimTreeToggle', 'NvimTreeFindFile'},
         requires = {
             'kyazdani42/nvim-web-devicons' -- optional, for file icon
         },
@@ -81,7 +85,11 @@ return require('packer').startup(function(use)
     }
 
     -- golang
-    use {"ray-x/go.nvim", config = get_config("go")}
+    use {
+      "ray-x/go.nvim",
+      ft = {"go"},
+      config = get_config("go")
+    }
 
     -- bufferline (tabs)
     use {
@@ -104,9 +112,6 @@ return require('packer').startup(function(use)
     -- keymaps
     use {"folke/which-key.nvim", config = get_config("which")}
 
-    -- projects
-    use {"ahmedkhalf/project.nvim", config = get_config("project")}
-
     -- comments
     use {'numToStr/Comment.nvim', config = get_config("comment")}
 
@@ -127,13 +132,6 @@ return require('packer').startup(function(use)
         "lukas-reineke/indent-blankline.nvim",
         event = "BufReadPre",
         config = get_config("indent-blankline")
-    }
-
-    use {
-        "akinsho/nvim-toggleterm.lua",
-        keys = {"<C-y>", "<leader>fl", "<leader>gt"},
-        branch = 'main',
-        config = get_config("toggleterm")
     }
 
     use {

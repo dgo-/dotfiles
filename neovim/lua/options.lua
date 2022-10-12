@@ -33,10 +33,6 @@ vim.opt.listchars = {
 }
 ]]--
 
--- vim.g.do_filetype_lua = 1
--- vim.g.did_load_filetypes = 0
-vim.g.do_filetype_lua = 1
-vim.g.did_load_filetypes = 0
 -------------------------------------------------------------------------
 -- files
 vim.opt.backup   = false                                -- don't create backup files
@@ -93,11 +89,13 @@ local disabled_builtins = {
     "netrwPlugin",
     "netrwSettings",
     "netrwFileHandlers",
+    "man",
     "matchit",
     "tar",
     "tarPlugin",
     "rrhelper",
     "spellfile_plugin",
+    "tutor_mode_plugin",
     "vimball",
     "vimballPlugin",
     "zip",
@@ -106,3 +104,13 @@ local disabled_builtins = {
 for _, plugin in pairs(disabled_builtins) do
   vim.g["loaded_" .. plugin] = 1
 end
+
+-- disable filetypes.vim only use lua version
+vim.g.do_filetype_lua = 1
+vim.g.did_load_filetypes = 0
+
+-- disable plugin interface for scripting languages
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_node_provider = 0
+vim.g.loaded_ruby_provider = 0

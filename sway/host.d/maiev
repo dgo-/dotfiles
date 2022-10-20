@@ -37,8 +37,8 @@ output "Chimei Innolux Corporation 0x14C9 0x00000000" {
   position 0,0
 }
 
-output "Samsung Electric Company LU28R55 H4ZN100927" {
-  scale 1.5
+output "Dell Inc. DELL U2723QE 880HGH3" {
+  scale 1.2
   position 1920,0
 }
 

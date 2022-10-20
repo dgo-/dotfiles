@@ -41,3 +41,9 @@ output "Samsung Electric Company LU28R55 H4ZN100927" {
   scale 1.5
   position 1920,0
 }
+
+#############################################################################
+### lid close
+#############################################################################
+bindswitch lid:on  exec swaymsg output eDP-1 disable
+bindswitch lid:off exec swaymsg output eDP-1 enable

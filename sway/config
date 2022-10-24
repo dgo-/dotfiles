@@ -34,7 +34,9 @@ xwayland enable
 #############################################################################
 
 # lock screen when go to sleep
-exec swayidle -w before-sleep 'swaylock -f -c 000000'
+exec swayidle -w \
+  after-resume 'swaymsg "output * enable"' \
+  before-sleep 'swaylock -f -c 000000'
 
 #############################################################################
 ### appearance
@@ -219,4 +221,3 @@ hide_edge_borders --i3 smart_no_gaps
 ### systemd
 #############################################################################
 exec "systemctl --user import-environment; systemctl --user start sway-session.target"
-

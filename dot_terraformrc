@@ -1,0 +1,3 @@
+# not reach out to hashi servers
+disable_checkpoint = true
+disable_checkpoint_signature = true

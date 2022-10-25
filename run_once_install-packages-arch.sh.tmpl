@@ -1,0 +1,64 @@
+{{ if eq .chezmoi.os "linux" -}}
+{{ if eq .chezmoi.osRelease.id "arch" -}}
+#! /bin/bash
+
+cat << EOF | xargs sudo pacman -S --needed --noconfirm
+git
+base-devel
+inetutils
+neovim
+zsh
+htop
+iftop
+fzf
+kitty
+alacritty
+sway
+network-manager-applet
+firefox
+chromium
+youtube-dl
+mpv
+vlc
+discord
+thunar
+kanshi
+imv
+grim
+slurp
+gammastep
+firefox
+chromium
+libreoffice
+github-cli
+brightnessctl
+bluez
+bluez-utils
+blueman
+playerctl
+xdg-user-dirs
+man-db
+rsync
+usbutils
+firefox-i18n-de
+hunspell
+hunspell-de
+intel-media-driver
+linux-firmware
+whois
+lua-language-server
+yaml-language-server
+bash-language-server
+pyright
+luarocks
+gnome-keyring
+seahorse
+noto-fonts-emoji
+lsd
+exa
+bat
+ripgrep
+foot
+EOF
+{{ end -}}
+{{ end -}}

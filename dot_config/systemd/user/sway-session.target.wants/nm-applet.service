@@ -1,0 +1,9 @@
+[Unit]
+Description=Network Manager Applet
+
+[Service]
+ExecStart=/usr/bin/nm-applet --indicator
+Restart=on-abort
+
+[Install]
+WantedBy=sway-session.target

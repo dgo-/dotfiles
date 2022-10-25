@@ -1,0 +1,20 @@
+# ignore the README
+README.md
+
+# install systemd only on linux
+{{ if ne .chezmoi.os "linux" }}
+.config/systemd
+{{ end }}
+
+# install fonts only on linux
+{{ if ne .chezmoi.os "linux" }}
+.local/share/fonts
+{{ end }}
+
+
+# old windows manager
+.fluxbox
+.config/i3
+
+# not use it currently
+.mutt

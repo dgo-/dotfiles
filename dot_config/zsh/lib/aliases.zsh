@@ -35,8 +35,7 @@ if [ "${?}" -eq "0" ]; then
   alias less='bat --paging=always'
 
   # override MANPAGER
-  export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-
+  export MANPAGER="sh -c 'col -bx | bat -l man --style plain'"
 fi
 
 ##########################################

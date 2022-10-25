@@ -1,11 +1,20 @@
-# dgo's dotiles
-collection of my dotfiles
+# Daniel's Dotiles
+This is the collection of my dotfiles.
 
-## install the dotfiles
-to install the dotfiles simple use this commands
+I collected this configurations over the last decade.
 
+## Management
+I use [chezmoi](https://www.chezmoi.io/) to manage my dotfiles.
+
+A few useful **chezmoi** commands:
+
+**clone and apply the dotfiles good for new machines**
 ```bash
-git clone https://github.com/dgo-/dotfiles.git ~/.dotfiles.git
-cd ~/.dotfiles.git
-make -b
+chezmoi init --apply git@github.com:dgo-/dotfiles.git
 ```
+
+*updates local dotfiles*
+```bash
+chezmoi update
+```
+*(git pull --rebase && chezmoi apply.)*

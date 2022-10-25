@@ -1,0 +1,8 @@
+[Unit]
+Description=megasync
+
+[Service]
+ExecStart=/usr/bin/megasync
+
+[Install]
+WantedBy=sway-session.target

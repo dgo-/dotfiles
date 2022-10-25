@@ -1,2 +1,0 @@
-xset b off &                                # no noise (disable beep)
-numlockx on &                               # enable numlock

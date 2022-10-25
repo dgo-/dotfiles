@@ -1,0 +1,18 @@
+[app] (name=fbrun)
+  [Position]	(WINCENTER)	{0 0}
+  [Layer]	{2}
+[end]
+
+[app] (pidgin)
+  [Position]  (WINCENTER) {0 0}
+  [Head] {1}
+  [Workspace] {1}
+  [Deco] {none}
+[end]
+
+
+[app] (class=Thunderbird) (role=3pane)
+  [Maximized] {yes}
+  [Deco] {NONE}
+  [Fullscreen] {true}
+[end]

@@ -1,0 +1,29 @@
+#!/bin/sh
+# set -x 
+# fluxbox startup-script:
+
+# include xrandr
+. ${HOME}/.xrandrc
+
+# load xmodmap
+xmodmap ${HOME}/.Xmodmap
+
+# startapps
+startdir="${HOME}/.fluxbox/start.d"
+
+if [ -d "${startdir}" ]; then
+  for i in `ls ${startdir}/*.start`; do
+    #start=`cat ${startdir}/${i}`
+    #${start} &
+    ${i} &
+  done
+fi
+
+# setwallpaper
+fbsetbg -l &
+
+# startfluxbox
+exec fluxbox
+
+# or if you want to keep a log:
+# exec fluxbox -log "/home/daniel/.fluxbox/log"

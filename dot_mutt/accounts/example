@@ -1,0 +1,24 @@
+# Account Settings ------------------------------
+set my_accountname = "example"
+
+set from      = "user@example.com"
+#set sendmail  = "/usr/local/bin/msmtp -a example"
+
+# signatur
+set signature        = ~/.mutt/signature/$my_accountname
+
+# default folder
+set spoolfile = "+$my_accountname/INBOX"
+set mbox      = "+$my_accountname/Archive"
+set postponed = "+$my_accountname/Drafts"
+set record    = "+$my_accountname/Sent Messages"
+
+# boxes
+mailboxes "+-- example --" \
+        +stderror/INBOX \
+        +stderror/Archive \
+        +stderror/Drafts \
+        +stderror/Sent\ Messages
+
+# hook change setting per mailbox
+#folder-hook $my_accountname/*        source ~/.mutt/accounts/$my_accountname.conf

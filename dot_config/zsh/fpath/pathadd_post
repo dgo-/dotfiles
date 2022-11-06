@@ -1,0 +1,8 @@
+#! /usr/bin/env zsh
+
+new="${1:A}"
+if [ -d "${new}" ]; then
+  if [[ ":${PATH}:" != *":${new}:"* ]]; then
+    PATH="${PATH}:${new}"
+  fi
+fi

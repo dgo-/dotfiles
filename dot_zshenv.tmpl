@@ -1,0 +1,25 @@
+# zshenv
+
+# XDG
+export XDG_CONFIG_HOME="${HOME}/.config"
+export XDG_CACHE_HOME="${HOME}/.cache"
+export XDG_STATE_HOME="${HOME}/.local/state"
+export XDG_DATA_HOME="${HOME}/.local/share"
+export XDG_BIN_HOME="${HOME}/.local/bin"
+
+# ZSH
+export ZSH_DIR="${XDG_CONFIG_HOME}/zsh"
+
+# editor
+export EDITOR="{{ .editor }}"
+export VISUAL="{{ .editor }}"
+
+# golang
+export GOPATH="${HOME}/.go"
+export GOBIN="${GOPATH}/bin"
+export GO111MODULE=on
+
+{{- if eq .chezmoi.os "darwin" }}
+# mac
+export HOMEBREW_NO_AUTO_UPDATE=1
+{{- end }}

@@ -1,20 +1,10 @@
 ##########################################
 # ls => exa
-
+{{- if lookPath "exa" }}
 # exchange ls with exa
 # https://the.exa.website/
-command_exists "exa"
-if [ "${?}" -eq "0" ]; then
-  alias ls='exa'
-else
-  # if no exa can be used make ls colorful
-  if [ "${OSTYPE}" = "linux-gnu" ]; then
-    alias ls='ls --color=auto'
-  elif [ "${OSTYPE}" = "darwin" ]; then
-    export CLICOLOR=1
-    export LSCOLORS=GxFxCxDxBxegedabagaced
-  fi
-fi
+alias ls='exa'
+{{- end }}
 
 # options
 alias lsa='ls -lah'
@@ -24,38 +14,33 @@ alias ll='ls -l'
 # mistakes
 alias sl=ls
 
+{{ if lookPath "bat" -}}
 ##########################################
 # cat/less/man => bat
-
 # exchange cat/less with bat
 # https://github.com/sharkdp/bat
-command_exists "bat"
-if [ "${?}" -eq "0" ]; then
-  alias cat='bat -pp'
-  alias less='bat --paging=always'
+alias cat='bat -pp'
+alias less='bat --paging=always'
 
-  # override MANPAGER
-  export MANPAGER="sh -c 'col -bx | bat -l man --style plain'"
-fi
+# override MANPAGER
+export MANPAGER="sh -c 'col -bx | bat -l man --style plain'"
 
+{{ end -}}
+{{ if lookPath "bat" -}}
 ##########################################
 # grep => ripgrep
-
 # exchange grep with ripgrep
 # https://github.com/BurntSushi/ripgrep
-command_exists "rg"
-if [ "${?}" -eq "0" ]; then
-  alias grep='rg'
-fi
+alias grep='rg'
 
+{{ end -}}
+{{ if lookPath "nvim" -}}
 ##########################################
 # neovim
-command_exists "nvim"
-if [ "${?}" -eq "0" ]; then
-  alias vim=nvim
-  alias nv=nvim
-fi
+alias vim=nvim
+alias nv=nvim
 
+{{ end -}}
 ##########################################
 # mkdir
 alias mkdir='mkdir -p'
@@ -66,14 +51,20 @@ alias mdkir='mkdir -p'
 alias ..='cd ..'
 alias cd..='cd ..'
 
-##########################################
-# Show history
-alias history='fc -l 1'
+alias d='dirs -v'
+for index ({1..9}) alias "$index"="cd +${index}"; unset index
 
+##########################################
+# Show zsh
+alias history='fc -l 1'
+alias reload_zsh_completion='rehash'
+
+{{ if lookPath "kubectl" -}}
 ##########################################
 # kubectl
 alias k='kubectl'
 
+{{ end -}}
 ##########################################
 # ssh
 alias ssh='TERM=xterm ssh'
@@ -81,6 +72,10 @@ alias ssh='TERM=xterm ssh'
 ##########################################
 # directories
 # cd ~bin
-hash -d bin=$HOME/bin
-hash -d go=$GOPATH
-hash -d tmp=/tmp
+hash -d bin="${XDG_BIN_HOME}"
+hash -d go="${GOPATH}"
+hash -d tmp="/tmp"
+
+################################
+# default apps by os
+alias -s md="${EDITOR}"

@@ -1,0 +1,7 @@
+{{- $email := promptString "email" -}}
+
+[data]
+    full_name = "Daniel Goeke"
+    email = {{ $email | quote }}
+
+    editor = "nvim"

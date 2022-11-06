@@ -1,0 +1,8 @@
+# brew tap
+#tap "homebrew/cask"
+
+# brew install
+brew "git"
+
+# cask
+#cask "google-chrome"

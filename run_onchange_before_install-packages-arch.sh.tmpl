@@ -1,0 +1,9 @@
+{{ if eq .chezmoi.os "linux" -}}
+{{ if eq .chezmoi.osRelease.id "arch" -}}
+#! /bin/bash
+## files at should trigger a run
+# packages_arch:   {{ include "packages_arch" | sha256sum }}
+
+sudo pacman -S --needed --noconfirm - < {{ joinPath .chezmoi.sourceDir "packages_arch" | quote }}
+{{ end -}}
+{{ end -}}

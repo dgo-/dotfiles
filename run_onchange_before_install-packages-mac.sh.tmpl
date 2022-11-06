@@ -1,0 +1,8 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/bin/bash
+## files at should trigger a run
+# packages_mac:   {{ include "packages_mac" | sha256sum }}
+
+# install from inline brewfile
+brew bundle --no-lock --file={{ joinPath .chezmoi.sourceDir "packages_mac" | quote }}
+{{ end -}}

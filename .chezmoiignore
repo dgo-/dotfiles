@@ -11,10 +11,23 @@ README.md
 .local/share/fonts
 {{ end }}
 
+# install user-dirs only on linux
+{{ if ne .chezmoi.os "linux" }}
+.config/user-dirs.dirs
+{{ end }}
 
-# old windows manager
+# install sway only on linux
+{{ if ne .chezmoi.os "linux" }}
+.config/sway
+{{ end }}
+
+# old windows manager ( not in use)
 .fluxbox
 .config/i3
 
 # not use it currently
 .mutt
+
+# packages
+packages_arch
+packages_mac

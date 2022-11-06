@@ -214,10 +214,3 @@ smart_borders no_gaps
 
 # hide status bar if only one window exists tabbed/stacked
 hide_edge_borders --i3 smart_no_gaps
-
-
-
-#############################################################################
-### systemd
-#############################################################################
-exec "systemctl --user import-environment; systemctl --user start sway-session.target"

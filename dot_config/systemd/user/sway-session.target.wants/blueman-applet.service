@@ -1,9 +1,0 @@
-[Unit]
-Description=Network Manager Applet
-
-[Service]
-ExecStart=/usr/bin/blueman-applet
-Restart=on-abort
-
-[Install]
-WantedBy=sway-session.target

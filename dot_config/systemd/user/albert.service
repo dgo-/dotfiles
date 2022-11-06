@@ -1,9 +1,0 @@
-[Unit]
-Description=albert
-
-[Service]
-Environment=LANG=de_DE.utf8
-ExecStart=/usr/bin/albert
-
-[Install]
-WantedBy=sway-session.target

@@ -1,0 +1,43 @@
+# ssh config
+
+# Notes:
+# First match for a host will set the config value,
+# so configure exact matches first and use wildcard later
+# Put host configs in conf.d folder.
+
+# Include conf.d
+Include conf.d/*
+
+# defaults
+Host *
+  compression yes  # enable compressions
+
+  # disabled for security reasons
+  ForwardAgent no
+  ForwardX11 no
+
+  # enable connection multiplexing
+  ControlMaster auto
+  ControlPath ~/.ssh/conn_multi/%C
+
+### examples
+# ssh generate key
+# ed25519 > ecdsa > rsa > dsa
+# ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/id_ed25519 -C "john@example.com"
+
+# bastion
+# ssh -J <bastion-host> <remote-host>
+#Host bastion-host-nickname
+#  HostName bastion-hostname
+#Host remote-host-nickname
+#  HostName remote-hostname
+#  ProxyJump bastion-host-nickname
+#  #  ProxyCommand ssh bastion-host -W %h:%p # old school
+
+# example host
+#Host example
+#  Hostname example.example.com
+#  User example
+#  IdentityFile ~/ssh/keys/github.com_ed25519
+#  IdentitiesOnly yes
+#  PreferredAuthentications publickey

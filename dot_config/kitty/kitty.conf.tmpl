@@ -1,0 +1,44 @@
+# Disable audio bell
+enable_audio_bell no
+
+# layout
+enabled_layouts splits
+
+
+# grey out inactive windows
+inactive_text_alpha 0.5
+
+# tab bar
+tab_bar_edge top
+tab_bar_style fade
+
+# disable looking for updates
+update_check_interval 0
+
+# keyboard
+{{ if eq .chezmoi.os "darwin" }}
+map cmd+c        copy_to_clipboard
+map cmd+v        paste_from_clipboard
+map shift+insert paste_from_clipboard
+{{ else }}
+{{ end }}
+
+# Create a new window splitting the space used by the existing one so that
+# the two windows are placed one above the other
+map alt+shift+D launch --location=hsplit
+
+# Create a new window splitting the space used by the existing one so that
+# the two windows are placed side by side
+map alt+d launch --location=vsplit
+
+# Create a new window splitting the space used by the existing one so that
+# the two windows are placed side by side if the existing window is wide or
+# one above the other if the existing window is tall.
+map f4 launch --location=split
+
+# Rotate the current split, chaging its split axis from vertical to
+# horizontal or vice versa
+map f7 layout_action rotate
+
+# theme
+include current-theme.conf

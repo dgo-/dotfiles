@@ -12,7 +12,6 @@ sway
 network-manager-applet
 firefox
 chromium
-youtube-dl
 mpv
 vlc
 discord
@@ -58,3 +57,4 @@ tmux
 neofetch
 udisks2
 fwupd
+yt-dlp

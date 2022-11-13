@@ -1,6 +1,6 @@
 #exec light -I
 #exec ssh-agent -a "${SSH_AUTH_SOCK}"
-exec albert
+exec LANG=de_DE.utf8 albert
 exec nm-applet --indicator
 exec blueman-applet
 exec megasync

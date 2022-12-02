@@ -50,6 +50,12 @@ export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
 export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
 {{- end }}
 
+{{ if lookPath "direnv" -}}
+###################################################################################
+# direnv
+eval "$(direnv hook zsh)"
+{{- end }}
+
 ###################################################################################
 # setup completion
 autoload -U compinit

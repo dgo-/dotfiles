@@ -29,7 +29,6 @@ build for neovim >0.5
 
 --require('keymaps')
 
-require('impatient')
 require("options")
 require("autocmds")
 require("mappings")

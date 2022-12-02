@@ -18,6 +18,7 @@ brew "pass"
 brew "salt"
 brew "glab"
 brew "gh"
+brew "asdf"
 
 # cask
 #cask "google-chrome"

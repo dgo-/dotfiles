@@ -56,6 +56,14 @@ export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
 eval "$(direnv hook zsh)"
 {{- end }}
 
+{{ if lookPath "asdf" -}}
+###################################################################################
+# asdf
+{{ if eq .chezmoi.os "darwin" -}}
+. $(brew --prefix asdf)/libexec/asdf.sh
+{{- end }}
+{{- end }}
+
 ###################################################################################
 # setup completion
 autoload -U compinit

@@ -1,8 +1,28 @@
 # brew tap
-#tap "homebrew/cask"
+# Brewfile Syntax:
+# https://thoughtbot.com/blog/brewfile-a-gemfile-but-for-homebrew
 
 # brew install
 brew "git"
+brew "starship"
+brew "neovim"
+brew "exa"
+brew "bat"
+brew "ripgrep"
+brew "htop"
+brew "direnv"
+brew "pipenv"
+brew "rsync"
+brew "sops"
+brew "pass"
+brew "salt"
+brew "glab"
+brew "gh"
 
 # cask
 #cask "google-chrome"
+cask "kitty"
+cask "iterm2"
+cask "visual-studio-code"
+cask "appcleaner"
+cask "rectangle"

@@ -20,6 +20,12 @@ Host *
   ControlMaster auto
   ControlPath ~/.ssh/conn_multi/%C
 
+{{ if eq .chezmoi.os "darwin" -}}
+  # mac os keychain
+  UseKeychain yes
+  AddKeysToAgent yes
+{{- end }}
+
 ### examples
 # ssh generate key
 # ed25519 > ecdsa > rsa > dsa

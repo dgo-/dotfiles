@@ -19,6 +19,7 @@ brew "salt"
 brew "glab"
 brew "gh"
 brew "asdf"
+brew "jq"
 
 # cask
 #cask "google-chrome"

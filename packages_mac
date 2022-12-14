@@ -20,6 +20,12 @@ brew "glab"
 brew "gh"
 brew "asdf"
 brew "jq"
+brew "siege"
+brew "openstackclient"
+brew "terraform-ls"
+brew "bash-language-server"
+brew "pre-commit"
+brew "podman"
 
 # cask
 #cask "google-chrome"

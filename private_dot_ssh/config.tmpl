@@ -16,10 +16,6 @@ Host *
   ForwardAgent no
   ForwardX11 no
 
-  # enable connection multiplexing
-  ControlMaster auto
-  ControlPath ~/.ssh/conn_multi/%C
-
 {{ if eq .chezmoi.os "darwin" -}}
   # mac os keychain
   UseKeychain yes

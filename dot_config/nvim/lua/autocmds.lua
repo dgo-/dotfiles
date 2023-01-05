@@ -18,7 +18,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
       if not match_filetype(disabled_filetypes) then
         local save = vim.fn.winsaveview()
         vim.api.nvim_exec([[keepjumps keeppatterns silent! %s/\s\+$//e]], false)          -- removes all trailing whitspace
-        vim.api.nvim_exec([[keepjumps keeppatterns silent! %s/\($\n\s*\)\+\%$//]], false) -- trim last line
         vim.fn.winrestview(save)
       end
     end,

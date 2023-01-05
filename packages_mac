@@ -22,15 +22,20 @@ brew "asdf"
 brew "jq"
 brew "siege"
 brew "openstackclient"
-brew "terraform-ls"
-brew "bash-language-server"
 brew "pre-commit"
-brew "yamllint"
-brew "shellcheck"
 brew "pwgen"
 
-# cask
-#cask "google-chrome"
+# language-servers
+brew "terraform-ls"
+brew "bash-language-server"
+brew "yaml-language-server"
+
+# linter
+brew "yamllint"
+brew "shellcheck"
+
+# casks
+cask "google-chrome"
 cask "kitty"
 cask "iterm2"
 cask "visual-studio-code"

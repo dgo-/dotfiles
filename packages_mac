@@ -25,7 +25,9 @@ brew "openstackclient"
 brew "terraform-ls"
 brew "bash-language-server"
 brew "pre-commit"
-brew "podman"
+brew "yamllint"
+brew "shellcheck"
+brew "pwgen"
 
 # cask
 #cask "google-chrome"

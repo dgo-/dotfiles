@@ -105,10 +105,6 @@ for _, plugin in pairs(disabled_builtins) do
   vim.g["loaded_" .. plugin] = 1
 end
 
--- disable filetypes.vim only use lua version
-vim.g.do_filetype_lua = 1
-vim.g.did_load_filetypes = 0
-
 -- disable plugin interface for scripting languages
 vim.g.loaded_python3_provider = 0
 vim.g.loaded_perl_provider = 0

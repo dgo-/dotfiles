@@ -29,6 +29,7 @@ brew "pwgen"
 brew "terraform-ls"
 brew "bash-language-server"
 brew "yaml-language-server"
+brew "lua-language-server"
 
 # linter
 brew "yamllint"

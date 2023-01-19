@@ -25,9 +25,19 @@ brew "openstackclient"
 brew "pre-commit"
 brew "pwgen"
 
-# language-servers
-brew "terraform-ls"
+# bash
+brew "bash"
 brew "bash-language-server"
+
+# golang
+brew "golang"
+brew "golangci-lint"
+
+# terraform
+brew "terraform"
+brew "terraform-ls"
+
+# language-servers
 brew "yaml-language-server"
 brew "lua-language-server"
 

@@ -1,0 +1,38 @@
+{{- if eq .chezmoi.os "darwin" -}}
+{{- if lookPath "brew" -}}
+#!/bin/bash
+
+casks=""
+if [ ! -d "/Applications/Google Chrome.app/" ]; then
+  casks="${casks} google-chrome"
+fi
+if [ ! -d "/Applications/kitty.app/" ]; then
+  casks="${casks} kitty"
+fi
+if [ ! -d "/Applications/iTerm.app/" ]; then
+  casks="${casks} iterm2"
+fi
+if [ ! -d "/Applications/Visual Studio Code.app/" ]; then
+  casks="${casks} visual-studio-code"
+fi
+if [ ! -d "/Applications/AppCleaner.app/" ]; then
+  casks="${casks} appcleaner"
+fi
+if [ ! -d "/Applications/Rectangle.app/" ]; then
+  casks="${casks} rectangle"
+fi
+if [ ! -d "/Applications/Alfred 5.app/" ]; then
+  casks="${casks} alfred"
+fi
+if [ ! -d "/Applications/Bitwarden.app/" ]; then
+  casks="${casks} bitwarden"
+fi
+if [ ! -d "/Applications/Firefox.app/" ]; then
+  casks="${casks} firefox"
+fi
+
+if [ "${casks}" != "" ]; then
+  brew install --cask ${casks}
+fi
+{{ end -}}
+{{ end -}}

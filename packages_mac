@@ -25,6 +25,7 @@ brew "pre-commit"
 brew "pwgen"
 brew "bitwarden-cli"
 brew "chezmoi"
+brew "mas"
 
 # bash
 brew "bash"

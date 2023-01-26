@@ -46,6 +46,14 @@ Enable **Advanced Data Protection**. As recovery method setup up a
 
 Disable **Access iCloud Data on the Web**.
 
+#### Siri Spotlight
+
+Go to **System Settings** > **Siri & Spotlight**
+
+* Disable: Ask Siri
+* Unselect all Search results under spotlight. 
+* Under **Spotlight Privacy** add the *Application* and *Home* folder
+
 #### Enable Night Shift
 
 Go to **System Settings** > **Displays** here you will find **Night Shift**.
@@ -53,7 +61,7 @@ Go to **System Settings** > **Displays** here you will find **Night Shift**.
 Set the *schedule* to `Custom` and From `22:00` to `7:00` and set the
 *Colour temperature* to `More Warm`.
 
-#### Disable AirDrop
+#### AirDrop
 
 Navigate to **System Settings** > **General** > **AirDrop & Handoff**.
 

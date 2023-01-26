@@ -52,3 +52,11 @@ Go to **System Settings** > **Displays** here you will find **Night Shift**.
 
 Set the *schedule* to `Custom` and From `22:00` to `7:00` and set the
 *Colour temperature* to `More Warm`.
+
+#### Disable AirDrop
+
+Navigate to **System Settings** > **General** > **AirDrop & Handoff**.
+
+Disable: *Allow Handoff between this Mac and your iCloud devices*
+Airdrop: No One
+Disable: Airplay Receiver

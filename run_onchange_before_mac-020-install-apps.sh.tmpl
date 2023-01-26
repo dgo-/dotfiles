@@ -30,6 +30,9 @@ fi
 if [ ! -d "/Applications/Firefox.app/" ]; then
   casks="${casks} firefox"
 fi
+if [ ! -d "/Applications/KeePassXC.app/" ]; then
+  casks="${casks} keepassxc"
+fi
 
 if [ "${casks}" != "" ]; then
   brew install --cask ${casks}

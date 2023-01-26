@@ -1,0 +1,161 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#! /usr/bin/env bash
+
+echo "Setting some Mac settings..."
+osascript -e 'tell application "System Preferences" to quit'
+
+# Disable new Window animation
+defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
+
+# Disable “natural” (Lion-style) scrolling
+defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
+
+# Enable tap to click. (Don't have to press down on the trackpad -- just tap it.)
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
+defaults -currentHost write -g com.apple.mouse.tapBehavior -int 1
+defaults write -g com.apple.mouse.tapBehavior -int 1
+
+###############################################################################
+# Dock
+###############################################################################
+
+# Move dock to the bottom
+defaults write com.apple.dock "orientation" -string "bottom"
+
+# Set the icon size of Dock items to 16 pixels
+defaults write com.apple.dock "tilesize" -int 16
+
+# Set dock to autohide
+defaults write com.apple.dock "autohide" -bool true
+
+# Set the autohide time to zero
+defaults write com.apple.dock "autohide-time-modifier" -float 0
+defaults write com.apple.dock "autohide-delay" -float 0
+
+# Don't show recent apps in dock
+defaults write com.apple.dock "show-recents" -bool false
+
+# Have only active apps in the dock
+defaults write com.apple.dock "static-only" -bool true
+
+# Keep spaces in order
+defaults write com.apple.dock "mru-spaces" -bool false
+
+###############################################################################
+# Finder                                                              #
+###############################################################################
+
+# Show all file extensions
+defaults write NSGlobalDomain "AppleShowAllExtensions" -bool "true"
+
+# Cleanup trash after 30 days
+defaults write com.apple.finder "FXRemoveOldTrashItems" -bool true
+
+# Don't show warning when changing the file extensions
+defaults write com.apple.finder "FXEnableExtensionChangeWarning" -bool false
+
+# Save files by default on local disk no iCloud
+defaults write NSGlobalDomain "NSDocumentSaveNewDocumentsToCloud" -bool false
+
+# Hide all icons on desktop
+defaults write com.apple.finder "CreateDesktop" -bool false
+
+# Search in current folder by default
+defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+
+# Hide disk and servers on desktop
+defaults write com.apple.finder "ShowHardDrivesOnDesktop" -bool false
+defaults write com.apple.finder "ShowExternalHardDrivesOnDesktop" -bool false
+defaults write com.apple.finder "ShowRemovableMediaOnDesktop" -bool false
+defaults write com.apple.finder "ShowMountedServersOnDesktop" -bool false
+
+# Avoid creating .DS_Store files on network or USB volumes
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+
+###############################################################################
+# 🔍 Spotlight
+###############################################################################
+
+# Limit number of things to index
+defaults write com.apple.spotlight orderedItems -array \
+	'{"enabled" = 1;"name" = "APPLICATIONS";}' \
+	'{"enabled" = 0;"name" = "MENU_SPOTLIGHT_SUGGESTIONS";}' \
+	'{"enabled" = 0;"name" = "MENU_CONVERSION";}' \
+	'{"enabled" = 0;"name" = "MENU_EXPRESSION";}' \
+	'{"enabled" = 0;"name" = "SYSTEM_PREFS";}' \
+	'{"enabled" = 0;"name" = "DIRECTORIES";}' \
+	'{"enabled" = 0;"name" = "PRESENTATIONS";}' \
+	'{"enabled" = 0;"name" = "PDF";}' \
+	'{"enabled" = 0;"name" = "MENU_DEFINITION";}' \
+	'{"enabled" = 0;"name" = "DOCUMENTS";}' \
+	'{"enabled" = 0;"name" = "SPREADSHEETS";}' \
+	'{"enabled" = 0;"name" = "MESSAGES";}' \
+	'{"enabled" = 0;"name" = "CONTACT";}' \
+	'{"enabled" = 0;"name" = "EVENT_TODO";}' \
+	'{"enabled" = 0;"name" = "IMAGES";}' \
+	'{"enabled" = 0;"name" = "BOOKMARKS";}' \
+	'{"enabled" = 0;"name" = "MUSIC";}' \
+	'{"enabled" = 0;"name" = "MOVIES";}' \
+	'{"enabled" = 0;"name" = "FONTS";}' \
+	'{"enabled" = 0;"name" = "MENU_OTHER";}'
+
+###############################################################################
+# Mac App Store                                                               #
+###############################################################################
+
+# Enable checking for updates
+defaults write com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true
+
+# Check for software updates daily, not just once per week
+defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
+
+# Download newly available updates in background
+defaults write com.apple.SoftwareUpdate AutomaticDownload -int 1
+
+# Install System data files & security updates
+defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
+
+# Auto updates apps from app store
+defaults write com.apple.commerce AutoUpdate -bool true
+
+###############################################################################
+# Mail                                                                        #
+###############################################################################
+
+# Disable send and reply animations in Mail.app
+defaults write com.apple.mail DisableReplyAnimations -bool true
+defaults write com.apple.mail DisableSendAnimations -bool true
+
+# Copy email addresses as `foo@example.com` instead of `Foo Bar <foo@example.com>` in Mail.app
+defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
+
+###############################################################################
+# Photos                                                                      #
+###############################################################################
+
+# Prevent Photos from opening automatically when devices are plugged in
+defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
+
+###############################################################################
+# screenshots
+###############################################################################
+
+# Disable shadow in screenshots
+defaults write com.apple.screencapture "disable-shadow" -bool true
+
+###############################################################################
+# DONE
+###############################################################################
+
+# Need to restart for several changes to take effect. Trackpad settings in particular.
+echo "Doing a soft restart of affected apps. You should restart when everything is finished."
+
+for app in "SystemUIServer" "cfprefsd" "Finder" "Dock" "ControlStrip" "ActivityMonitor"; do
+  echo $app
+  killall $app
+done
+
+exit 0
+{{ end -}}

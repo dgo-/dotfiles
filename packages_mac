@@ -26,6 +26,7 @@ brew "pwgen"
 brew "bitwarden-cli"
 brew "chezmoi"
 brew "mas"
+brew "iproute2mac"
 
 # bash
 brew "bash"

@@ -19,8 +19,9 @@ vim.opt.cmdheight     = 1    -- set commandline height
 vim.opt.splitbelow    = true -- force all horizontal splits to go below current window
 vim.opt.splitright    = true -- force all vertical splits to go to the right of current window
 vim.opt.cursorline    = true -- highlight the current line
-vim.opt.scrolloff     = 3 -- Minimal number of screen lines to keep above and below the cursor
-vim.opt.sidescrolloff = 5 -- The minimal number of columns to scroll horizontally
+vim.opt.scrolloff     = 3    -- Minimal number of screen lines to keep above and below the cursor
+vim.opt.sidescrolloff = 5    -- The minimal number of columns to scroll horizontally
+vim.opt.colorcolumn   = "99" -- Highlight the column
 
 --[[
 vim.opt.list = true -- enable listchars

@@ -51,7 +51,7 @@ Disable **Access iCloud Data on the Web**.
 Go to **System Settings** > **Siri & Spotlight**
 
 * Disable: Ask Siri
-* Unselect all Search results under spotlight. 
+* Unselect all Search results under spotlight.
 * Under **Spotlight Privacy** add the *Application* and *Home* folder
 
 #### Enable Night Shift
@@ -68,3 +68,4 @@ Navigate to **System Settings** > **General** > **AirDrop & Handoff**.
 Disable: *Allow Handoff between this Mac and your iCloud devices*
 Airdrop: No One
 Disable: Airplay Receiver
+

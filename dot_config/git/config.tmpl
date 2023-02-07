@@ -5,6 +5,9 @@
 	name  = {{ .full_name }}
 	email = {{ .email }}
 
+[github]
+user = {{ .github_user }}
+
 [core]
   editor = {{ .editor }}
 
@@ -18,3 +21,7 @@
 
 [pull]
 	rebase = true
+
+# incldue work projects
+[includeIf "gitdir:~/work/"]
+path = ~/.config/git/config-work

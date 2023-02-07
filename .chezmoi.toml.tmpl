@@ -1,7 +1,15 @@
 {{- $email := promptString "email" -}}
+{{- $email_work := promptString "email_work" -}}
+
+{{- $github_work_user := promptString "github_work_user" -}}
 
 [data]
     full_name = "Daniel Goeke"
+
     email = {{ $email | quote }}
+    email_work = {{ $email_work | quote }}
+
+    github_user = "dgo-"
+    github_work_user = {{ $github_work_user | quote }}
 
     editor = "nvim"

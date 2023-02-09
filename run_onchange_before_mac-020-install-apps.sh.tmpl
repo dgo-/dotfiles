@@ -33,6 +33,9 @@ fi
 if [ ! -d "/Applications/KeePassXC.app/" ]; then
   casks="${casks} keepassxc"
 fi
+if [ ! -d "/Applications/NetNewsWire.app/" ]; then
+  casks="${casks} netnewswire"
+fi
 
 if [ "${casks}" != "" ]; then
   brew install --cask ${casks}

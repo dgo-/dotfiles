@@ -36,6 +36,9 @@ fi
 if [ ! -d "/Applications/NetNewsWire.app/" ]; then
   casks="${casks} netnewswire"
 fi
+if [ ! -d "/Applications/Syncthing.app/" ]; then
+  casks="${casks} Syncthing"
+fi
 
 if [ "${casks}" != "" ]; then
   brew install --cask ${casks}

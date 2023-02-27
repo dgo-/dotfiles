@@ -27,6 +27,7 @@ brew "bitwarden-cli"
 brew "chezmoi"
 brew "mas"
 brew "iproute2mac"
+brew "hugo"
 
 # bash
 brew "bash"

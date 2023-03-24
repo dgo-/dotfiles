@@ -1,11 +1,12 @@
 # zprofile
 
-# start ssh agent
-if [ -z "$SSH_AUTH_SOCK" ] ; then
-  eval `ssh-agent -s`
-  ssh-add
-fi
+{{ if lookPath "gpgconf" -}}
+# GPG
+export GPG_TTY=$(tty)
+export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+{{- end }}
 
+{{ if lookPath "sway" -}}
 # start sway
 if [ "$(tty)" = "/dev/tty1" ]; then
   # load sway environment
@@ -14,3 +15,4 @@ if [ "$(tty)" = "/dev/tty1" ]; then
   # start sway
 	exec sway > ~/.sway.log 2>&1
 fi
+{{- end }}

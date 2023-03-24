@@ -29,6 +29,10 @@ brew "mas"
 brew "iproute2mac"
 brew "hugo"
 
+# GPG
+brew "gnupg"
+brew "pinentry-mac"
+
 # bash
 brew "bash"
 brew "bash-language-server"
@@ -48,4 +52,3 @@ brew "lua-language-server"
 # linter
 brew "yamllint"
 brew "shellcheck"
-

@@ -1,9 +1,9 @@
 #! /usr/bin/env zsh
 
 ## files at should trigger a run
-# zshenv:   {{ includeTemplate "dot_zshenv.tmpl" . | sha256sum }}
-# zprofile: {{ include         "dot_zprofile"      | sha256sum }}
-# zshrc:    {{ include         "dot_zshrc.tmpl"    | sha256sum }}
+# zshenv:   {{ includeTemplate "dot_zshenv.tmpl"   . | sha256sum }}
+# zprofile: {{ includeTemplate "dot_zprofile.tmpl" . | sha256sum }}
+# zshrc:    {{ includeTemplate "dot_zshrc.tmpl"    . | sha256sum }}
 # aliases:  {{ includeTemplate "dot_config/zsh/aliases.zsh.tmpl" .  | sha256sum }}
 # settings: {{ include "dot_config/zsh/settings.zsh" | sha256sum }}
 

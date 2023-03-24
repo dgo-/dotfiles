@@ -19,7 +19,34 @@ export GOPATH="${HOME}/.go"
 export GOBIN="${GOPATH}/bin"
 export GO111MODULE=on
 
-{{- if eq .chezmoi.os "darwin" }}
-# mac
+{{ if eq .chezmoi.os "darwin" -}}
+# homebrew
 export HOMEBREW_NO_AUTO_UPDATE=1
+# Opt-out of homebrews user tracking
+# See https://github.com/Homebrew/brew/blob/master/share/doc/homebrew/Analytics.md for details
+export HOMEBREW_NO_ANALYTICS=1
+export HOMEBREW_NO_GITHUB_API=1
+{{- end }}
+
+# https://consoledonottrack.com/
+export DO_NOT_TRACK=1
+
+# Opt out of all Hashicorp products like Terraform
+export CHECKPOINT_DISABLE=1
+
+{{ if lookPath "semgrep" -}}
+# https://github.com/returntocorp/semgrep/pull/3874
+export SEMGREP_SEND_METRICS=off
+{{- end }}
+
+{{ if lookPath "yarn" -}}
+# https://yarnpkg.com/advanced/telemetry#how-can-i-disable-it
+if command -v yarn 2> /dev/null; then
+  yarn config set --home enableTelemetry 0
+fi
+{{- end }}
+
+{{ if lookPath "k6" -}}
+# https://k6.io/docs/misc/usage-collection/
+export K6_NO_USAGE_REPORT=true
 {{- end }}

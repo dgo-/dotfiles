@@ -16,6 +16,11 @@ Host *
   ForwardAgent no
   ForwardX11 no
 
+  # use default identity by default
+  IdentityFile ~/.ssh/keys/id_ed25519
+  IdentitiesOnly yes
+  PreferredAuthentications publickey
+
 {{ if eq .chezmoi.os "darwin" -}}
   # mac os keychain
   UseKeychain yes

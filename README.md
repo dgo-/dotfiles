@@ -33,6 +33,10 @@ because of that here are some manual task that needed to be done.
 
 This tasks need to be performed for an MacOS machine.
 
+### Install Font
+Download `MesoLG Nerd Font` from the [NerdFont site](https://www.nerdfonts.com/font-downloads).
+Extract the archive and move the content to `~/Library/Fonts/`.
+
 #### iCloud
 
 Go to **System Settings** > **Apple ID**.

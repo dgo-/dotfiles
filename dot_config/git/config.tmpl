@@ -10,7 +10,7 @@ user = {{ .github_user }}
 
 [core]
   editor = {{ .editor }}
-  sshCommand = "ssh -i ~/.ssh/keys/id_ed25519.pub"
+  sshCommand = "ssh -i ~/.ssh/keys/id_ed25519"
 
 {{ if lookPath "sops" -}}
 [diff "sopsdiff"]

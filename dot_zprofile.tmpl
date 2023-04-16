@@ -1,6 +1,26 @@
 # zprofile
 
+{{ if eq .chezmoi.os "darwin" -}}
+###################################################################################
+# homebrew
+export HOMEBREW_PREFIX="/opt/homebrew";
+export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
+export HOMEBREW_REPOSITORY="/opt/homebrew";
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
+export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
+export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
+{{- end }}
+
+###################################################################################
+# path
+export path=(
+"${XDG_BIN_HOME}"
+"${GOBIN}"
+${path}
+)
+
 {{ if lookPath "gpgconf" -}}
+###################################################################################
 # GPG
 # Add the following to your shell init to set up gpg-agent automatically for every shell
 if [ -n "$(pgrep gpg-agent)" ]; then
@@ -12,6 +32,7 @@ export GPG_TTY=$(tty)
 {{- end }}
 
 {{ if lookPath "sway" -}}
+###################################################################################
 # start sway
 if [ "$(tty)" = "/dev/tty1" ]; then
   # load sway environment

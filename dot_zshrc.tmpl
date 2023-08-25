@@ -47,6 +47,12 @@ zstyle ':completion:*' menu select
 # setup prompt
 eval "$(starship init zsh)"
 
+{{ if lookPath "rbenv" -}}
+###################################################################################
+# setup rbenv
+eval "$(rbenv init - zsh)"
+{{- end }}
+
 ###################################################################################
 # profiling (comment in to profile zsh)
 #zprof

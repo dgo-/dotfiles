@@ -8,6 +8,11 @@
 # Include conf.d
 Include conf.d/*
 
+{{ if lookPath "colima" -}}
+# colima
+Include ~/.colima/ssh_config
+{{- end }}
+
 # defaults
 Host *
   compression yes  # enable compressions

@@ -11,7 +11,6 @@ brew "bat"
 brew "ripgrep"
 brew "htop"
 brew "direnv"
-brew "pipenv"
 brew "rsync"
 brew "sops"
 brew "pass"
@@ -28,6 +27,7 @@ brew "chezmoi"
 brew "mas"
 brew "iproute2mac"
 brew "hugo"
+brew "yt-dlp"
 
 # GPG
 brew "gnupg"
@@ -36,19 +36,25 @@ brew "pinentry-mac"
 # bash
 brew "bash"
 brew "bash-language-server"
+brew "shellcheck"
 
 # golang
 brew "golang"
 brew "golangci-lint"
 
+# pyhton
+brew "pipenv"
+brew "pyright"
+brew "ruff"
+brew "black"
+
 # terraform
 brew "terraform"
 brew "terraform-ls"
 
-# language-servers
-brew "yaml-language-server"
+# lua
 brew "lua-language-server"
 
-# linter
+# yaml
 brew "yamllint"
-brew "shellcheck"
+brew "yaml-language-server"

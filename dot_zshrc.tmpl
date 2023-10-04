@@ -24,6 +24,9 @@
 # load libaries
 export fpath=(
 "${ZSH_DIR}/fpath"
+{{ if lookPath "brew" -}}
+"/opt/homebrew/share/zsh/site-functions"
+{{- end }}
 ${fpath}
 )
 autoload -U $fpath[1]/*(.:t)  # load all from functions from my directory

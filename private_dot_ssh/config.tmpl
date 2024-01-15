@@ -28,6 +28,7 @@ Host *
 
 {{ if eq .chezmoi.os "darwin" -}}
   # mac os keychain
+  # IgnoreUnknown AddKeysToAgent,UseKeychain
   UseKeychain yes
   AddKeysToAgent yes
 {{- end }}

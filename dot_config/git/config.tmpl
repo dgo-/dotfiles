@@ -23,6 +23,9 @@ user = {{ .github_user }}
 [pull]
 	rebase = true
 
+[rebase]
+    autoStash = true
+
 # incldue work projects
 [includeIf "gitdir:~/work/"]
 path = ~/.config/git/config-work

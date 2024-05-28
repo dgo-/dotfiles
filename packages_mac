@@ -2,6 +2,8 @@
 # Brewfile Syntax:
 # https://thoughtbot.com/blog/brewfile-a-gemfile-but-for-homebrew
 
+tap "hashicorp/tap"
+
 # brew install
 brew "git"
 brew "starship"
@@ -47,7 +49,7 @@ brew "ruff"
 brew "black"
 
 # terraform
-brew "terraform"
+brew "hashicorp/tap/terraform"
 brew "terraform-ls"
 
 # lua

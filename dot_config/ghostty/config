@@ -1,0 +1,10 @@
+#theme = GruvboxDarkHard
+#theme = Monokai Remastered
+#theme = Pro
+#theme = MaterialDesignColors
+theme = Wombat
+
+keybind=unconsumed:cmd+r=reload_config
+
+keybind=unconsumed:cmd+right=next_tab
+keybind=unconsumed:cmd+left=previous_tab

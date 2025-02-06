@@ -5,8 +5,8 @@
 # so configure exact matches first and use wildcard later
 # Put host configs in conf.d folder.
 
-# Include conf.d
-Include conf.d/*
+# Include config.d
+Include config.d/*
 
 {{ if lookPath "colima" -}}
 # colima
@@ -22,11 +22,12 @@ Host *
   ForwardX11 no
 
   # use default identity by default
-  IdentityFile ~/.ssh/keys/id_ed25519
-  IdentitiesOnly yes
+  #IdentityFile ~/.ssh/keys/id_ed25519
+  #IdentityFile ~/.ssh/keys/id_ecdsa
+  #IdentitiesOnly yes
   PreferredAuthentications publickey
 
-{{ if eq .chezmoi.os "darwin" -}}
+{{- if eq .chezmoi.os "darwin" }}
   # mac os keychain
   # IgnoreUnknown AddKeysToAgent,UseKeychain
   UseKeychain yes

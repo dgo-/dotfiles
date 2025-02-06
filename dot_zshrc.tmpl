@@ -31,8 +31,9 @@ ${fpath}
 )
 autoload -U $fpath[1]/*(.:t)  # load all from functions from my directory
 
-source "${ZSH_DIR}/aliases.zsh"
-source "${ZSH_DIR}/settings.zsh"
+for file in ${ZSH_DIR}/lib/*.zsh; do
+    source "$file"
+done
 
 {{ if lookPath "direnv" -}}
 ###################################################################################

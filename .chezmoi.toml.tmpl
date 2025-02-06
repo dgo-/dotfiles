@@ -1,9 +1,6 @@
 {{- $email := promptString "email" -}}
 {{- $email_work := promptString "email_work" -}}
 
-{{- $github_work_user := promptString "github_work_user" -}}
-{{- $gpg_id_work := promptString "gpg_id_work" -}}
-
 [data]
     full_name = "Daniel Goeke"
 
@@ -11,8 +8,5 @@
     email_work = {{ $email_work | quote }}
 
     github_user = "dgo-"
-    github_work_user = {{ $github_work_user | quote }}
-
-    gpg_id_work = {{ $gpg_id_work | quote }}
 
     editor = "nvim"

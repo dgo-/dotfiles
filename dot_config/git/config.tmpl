@@ -1,31 +1,38 @@
 [init]
-	defaultBranch = main
+  defaultBranch = main
 
 [user]
-	name  = {{ .full_name }}
-	email = {{ .email }}
+  name  = {{ .full_name }}
+  email = {{ .email }}
 
 [github]
 user = {{ .github_user }}
 
 [core]
   editor = {{ .editor }}
-  sshCommand = "ssh -i ~/.ssh/keys/id_ed25519"
+  pager = less -FMRiX
 
-{{ if lookPath "sops" -}}
+{{ if lookPath "sops" }}
 [diff "sopsdiff"]
   textconv = sops --decrypt
 {{ end -}}
 
 [push]
   autoSetupRemote = true
+  default = simple
 
 [pull]
-	rebase = true
+  rebase = true
 
 [rebase]
-    autoStash = true
+  autoStash = true
 
-# incldue work projects
-[includeIf "gitdir:~/work/"]
-path = ~/.config/git/config-work
+[color]
+  ui = auto
+
+[alias]
+  dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)%an <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
+
+# incldue work config
+[includeIf "hasconfig:remote.*.url:ssh://git.amazon.com/**"]
+  path = ~/.config/git/config-work

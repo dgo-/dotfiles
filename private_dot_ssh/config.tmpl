@@ -8,10 +8,11 @@
 # Include config.d
 Include config.d/*
 
-{{ if lookPath "colima" -}}
-# colima
-Include ~/.colima/ssh_config
-{{- end }}
+# devbox
+Host devbox
+  HostName 2a01:4f8:1c17:4249::1
+  User dgo
+  ForwardAgent yes
 
 # defaults
 Host *
@@ -22,14 +23,13 @@ Host *
   ForwardX11 no
 
   # use default identity by default
-  #IdentityFile ~/.ssh/keys/id_ed25519
-  #IdentityFile ~/.ssh/keys/id_ecdsa
-  #IdentitiesOnly yes
+  IdentityFile ~/.ssh/keys/id_ed25519
+  IdentitiesOnly yes
   PreferredAuthentications publickey
 
 {{- if eq .chezmoi.os "darwin" }}
   # mac os keychain
-  # IgnoreUnknown AddKeysToAgent,UseKeychain
+  IgnoreUnknown AddKeysToAgent,UseKeychain
   UseKeychain yes
   AddKeysToAgent yes
 {{- end }}

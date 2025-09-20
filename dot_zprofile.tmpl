@@ -19,17 +19,15 @@ export path=(
 ${path}
 )
 
-{{ if lookPath "gpgconf" -}}
 ###################################################################################
-# GPG
-# Add the following to your shell init to set up gpg-agent automatically for every shell
-if [ -n "$(pgrep gpg-agent)" ]; then
-  export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
-else
-  eval $(gpg-agent --daemon)
+# SSH
+if [[ -z "$SSH_AUTH_SOCK" ]]
+then
+    eval $(ssh-agent) &> /dev/null
+    {{- if eq .chezmoi.os "darwin" }}
+    /usr/bin/ssh-add --apple-load-keychain &> /dev/null
+    {{- end }}
 fi
-export GPG_TTY=$(tty)
-{{- end }}
 
 {{ if lookPath "sway" -}}
 ###################################################################################

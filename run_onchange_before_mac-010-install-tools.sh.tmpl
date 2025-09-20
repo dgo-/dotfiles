@@ -5,6 +5,6 @@
 # packages_mac:   {{ include "packages_mac" | sha256sum }}
 
 # install from inline brewfile
-brew bundle --no-lock --file={{ joinPath .chezmoi.sourceDir "packages_mac" | quote }}
+brew bundle --file={{ joinPath .chezmoi.sourceDir "packages_mac" | quote }}
 {{ end -}}
 {{ end -}}

@@ -94,17 +94,6 @@ defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
 defaults write com.apple.commerce AutoUpdate -bool true
 
 ###############################################################################
-# Mail                                                                        #
-###############################################################################
-
-# Disable send and reply animations in Mail.app
-defaults write com.apple.mail DisableReplyAnimations -bool true
-defaults write com.apple.mail DisableSendAnimations -bool true
-
-# Copy email addresses as `foo@example.com` instead of `Foo Bar <foo@example.com>` in Mail.app
-defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
-
-###############################################################################
 # Photos                                                                      #
 ###############################################################################
 
@@ -127,7 +116,7 @@ echo "Doing a soft restart of affected apps. You should restart when everything 
 
 for app in "SystemUIServer" "cfprefsd" "Finder" "Dock" "ControlStrip" "ActivityMonitor"; do
   echo $app
-  killall $app
+  killall -q $app
 done
 
 exit 0

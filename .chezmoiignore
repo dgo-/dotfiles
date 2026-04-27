@@ -1,32 +1,18 @@
 # ignore the README
 README.md
 
-# install systemd only on linux
+# only on linux
 {{ if ne .chezmoi.os "linux" }}
 .config/systemd
-{{ end }}
-
-# install fonts only on linux
-{{ if ne .chezmoi.os "linux" }}
 .local/share/fonts
-{{ end }}
-
-# install user-dirs only on linux
-{{ if ne .chezmoi.os "linux" }}
 .config/user-dirs.dirs
-{{ end }}
-
-# install sway only on linux
-{{ if ne .chezmoi.os "linux" }}
 .config/sway
 {{ end }}
 
-# old windows manager ( not in use)
-.fluxbox
-.config/i3
-
-# not use it currently
-.mutt
+# only on mac
+{{ if ne .chezmoi.os "darwin" }}
+Library
+{{ end }}
 
 # packages
 packages_arch

@@ -1,2 +1,0 @@
-bash eval "$(keychain --eval --quick -q)" &
-export SSH_AUTH_SOCK SSH_AGENT_PID GPG_AGENT_INFO

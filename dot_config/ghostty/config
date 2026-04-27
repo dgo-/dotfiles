@@ -1,10 +1,19 @@
-#theme = GruvboxDarkHard
-#theme = Monokai Remastered
-#theme = Pro
-#theme = MaterialDesignColors
+# theme
 theme = Wombat
 
-keybind=unconsumed:cmd+r=reload_config
+# Font
+font-family = "FiraCode Nerd Font Mono"
 
-keybind=unconsumed:cmd+right=next_tab
-keybind=unconsumed:cmd+left=previous_tab
+# reload config
+keybind=cmd+r=reload_config
+
+# switch tabs
+keybind=cmd+right=next_tab
+keybind=cmd+left=previous_tab
+
+# ssh integration
+shell-integration-features = ssh-env,ssh-terminfo
+
+# automatic updates
+auto-update = download
+auto-update-channel  = stable

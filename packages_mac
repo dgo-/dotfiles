@@ -2,8 +2,6 @@
 # Brewfile Syntax:
 # https://thoughtbot.com/blog/brewfile-a-gemfile-but-for-homebrew
 
-tap "hashicorp/tap"
-
 # brew install
 brew "git"
 brew "starship"
@@ -16,17 +14,17 @@ brew "direnv"
 brew "rsync"
 brew "gh"
 brew "jq"
-brew "pre-commit"
+brew "prek"
 brew "pwgen"
 brew "chezmoi"
 brew "mas"
 brew "iproute2mac"
-brew "hugo"
 brew "yt-dlp"
 
-# bash
+# shell
 brew "bash"
-brew "bash-language-server"
+brew "zsh"
+brew "fish"
 brew "shellcheck"
 
 # golang
@@ -34,18 +32,13 @@ brew "golang"
 brew "golangci-lint"
 
 # pyhton
-brew "pipenv"
-brew "pyright"
+brew "uv"
 brew "ruff"
-brew "black"
+brew "ty"
+
+# AI
+cask "claude-code"
 
 # terraform
+tap "hashicorp/tap"
 brew "hashicorp/tap/terraform"
-brew "terraform-ls"
-
-# lua
-brew "lua-language-server"
-
-# yaml
-brew "yamllint"
-brew "yaml-language-server"

@@ -4,6 +4,13 @@
 [user]
   name  = {{ .full_name }}
   email = {{ .email }}
+  signingkey = {{ .chezmoi.homeDir }}/.ssh/keys/id_ed25519.pub
+
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  allowedSignersFile = {{ .chezmoi.homeDir }}/.ssh/allowed_signers
 
 [github]
 user = {{ .github_user }}
@@ -17,6 +24,9 @@ user = {{ .github_user }}
   textconv = sops --decrypt
 {{ end -}}
 
+[commit]
+  gpgsign = true
+
 [push]
   autoSetupRemote = true
   default = simple
@@ -27,6 +37,9 @@ user = {{ .github_user }}
 [rebase]
   autoStash = true
 
+[tag]
+  gpgsign = true
+
 [color]
   ui = auto
 
@@ -34,5 +47,5 @@ user = {{ .github_user }}
   dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)%an <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
 
 # incldue work config
-[includeIf "hasconfig:remote.*.url:ssh://git.amazon.com/**"]
+[includeIf "hasconfig:remote.*.url:git@github.com:codarise/**"]
   path = ~/.config/git/config-work

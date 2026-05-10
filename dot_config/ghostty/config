@@ -4,6 +4,11 @@ theme = Wombat
 # Font
 font-family = "FiraCode Nerd Font Mono"
 
+# start new windows/tab in home
+working-directory = home
+window-inherit-working-directory = false
+tab-inherit-working-directory = false
+
 # reload config
 keybind=cmd+r=reload_config
 

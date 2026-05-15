@@ -2,6 +2,7 @@ format = """
 $username\
 $hostname\
 $directory\
+$kubernetes\
 $git_branch\
 $git_state\
 $git_status\
@@ -14,6 +15,12 @@ $character"""
 truncation_length = 0
 truncate_to_repo = false
 style = "blue"
+
+[kubernetes]
+disabled = false
+format = '[$symbol$context( \($namespace\))]($style) '
+style = "cyan"
+symbol = "☸ "
 
 [character]
 success_symbol = "[❯](purple)"
